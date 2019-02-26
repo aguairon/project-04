@@ -1,0 +1,41 @@
+{
+  "name": "project-04",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:aguairon/project-04.git",
+  "author": "Begona Fernandez <boadicea1979@yahoo.es>",
+  "license": "MIT",
+  "scripts": {
+    "serve:react": "webpack-dev-server",
+    "serve:flask": "pipenv run flask run -p 4000",
+    "test": "mocha --require test/spec_helper --require ignore-styles test/**/*_spec.js --recursive --exit",
+    "build": "webpack -p",
+    "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build] || exit 0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
+  },
+  "devDependencies": {
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^13.2.0",
+    "mocha": "^6.0.2",
+    "sinon": "^7.2.4",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
