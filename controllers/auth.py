@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request, g
+from flask import Blueprint, jsonify, request
 from models.user import User, UserSchema
 
 api = Blueprint('auth', __name__)

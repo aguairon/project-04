@@ -8,7 +8,6 @@ from .base import BaseModel, BaseSchema
 
 class User(db.Model, BaseModel):
     __tablename__ = 'users'
-    
     username = db.Column(db.String(80), nullable=False, unique=True)
     email = db.Column(db.String(128), nullable=True, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
@@ -54,9 +53,9 @@ class UserSchema(ma.ModelSchema, BaseSchema):
         required=True,
         validate=[validate.Length(min=8, max=50)]
     )
-
     password_confirmation = fields.String(require=True)
 
+    created_articles = fields.Nested('ArticleSchema', many=True, exclude=('creator', ))
 
     class Meta:
         model = User

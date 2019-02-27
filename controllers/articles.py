@@ -10,3 +10,8 @@ article_schema = ArticleSchema()
 def index():
     articles = Article.query.all()
     return articles_schema.jsonify(articles)
+
+@api.route('/articles/<int:article_id>', methods=['GET'])
+def show(article_id):
+    article = Article.query.get(article_id)
+    return article_schema.jsonify(article)

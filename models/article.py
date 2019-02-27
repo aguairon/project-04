@@ -1,7 +1,6 @@
 from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
-from models.user import UserSchema
 
 class Article(db.Model, BaseModel):
 
