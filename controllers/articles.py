@@ -15,6 +15,7 @@ def index():
 @api.route('/articles/<int:article_id>', methods=['GET'])
 def show(article_id):
     article = Article.query.get(article_id)
+
     return article_schema.jsonify(article)
 
 @api.route('/articles', methods=['POST'])
@@ -41,6 +42,35 @@ def update(article_id):
 
     if errors:
         return jsonify(errors), 422
+
+    article.save()
+
+    return article_schema.jsonify(article)
+
+@api.route('/articles/<int:article_id>/like', methods=['PUT'])
+@secure_route
+def like(article_id):
+    article = Article.query.get(article_id)
+
+    if article.creator == g.current_user:
+        return jsonify({'message':'You own this article'}), 401
+
+    article.liked_by.append(g.current_user)
+
+    article.save()
+
+    return article_schema.jsonify(article)
+
+@api.route('/articles/<int:article_id>/like', methods=['DELETE'])
+@secure_route
+def unlike(article_id):
+    article = Article.query.get(article_id)
+
+    if article.creator == g.current_user:
+        return jsonify({'message':'You own this article'}), 401
+
+    if g.current_user in article.liked_by:
+        article.liked_by.remove(g.current_user)
 
     article.save()
 

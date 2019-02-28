@@ -1,6 +1,7 @@
 from app import app, db
 from models.user import UserSchema
 from models.article import Article
+from models.message import Message
 
 
 user_schema = UserSchema()
@@ -34,7 +35,8 @@ with app.app_context():
         title='Aeternae',
         #pylint: disable=C0301
         content="The Aeternae were a race of legendary creatures described in the travels of Alexander the Great.As Alexander's army passed northern Indian plains, they supposedly encountered the Aeternae, who killed some of Alexander's men.The Aeternae were described as killing and wounding enemies with bony, saw-toothed protuberances sprouting from their heads.",
-        creator=greg
+        creator=greg,
+        liked_by=[begona]
     )
     aeternae.save()
 
@@ -45,3 +47,10 @@ with app.app_context():
         creator=begona
     )
     athos.save()
+
+    message1 = Message(
+        content="blah",
+        sender=begona,
+        article=aeternae
+    )
+    message1.save()

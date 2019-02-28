@@ -55,7 +55,8 @@ class UserSchema(ma.ModelSchema, BaseSchema):
     )
     password_confirmation = fields.String(require=True)
 
-    created_articles = fields.Nested('ArticleSchema', many=True, exclude=('creator', ))
+    created_articles = fields.Nested('ArticleSchema', many=True, exclude=('creator', 'liked_by'))
+    likes = fields.Nested('ArticleSchema', many=True, only=('title', 'id'))
 
     class Meta:
         model = User

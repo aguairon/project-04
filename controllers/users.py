@@ -1,5 +1,6 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify, request, g
 from models.user import User, UserSchema
+from lib.secure_route import secure_route
 
 api = Blueprint('users', __name__)
 
@@ -15,3 +16,8 @@ def index():
 def show(user_id):
     user = User.query.get(user_id)
     return user_schema.jsonify(user)
+
+@api.route('/me', methods=['GET'])
+@secure_route
+def me():
+    return user_schema.jsonify(g.current_user)

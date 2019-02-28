@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+// // Set your brand colors
+// $purple: #8A4D76;
+// $pink: #FA7C91;
+// $brown: #757763;
+// $green: #00d1b2;
+// $beige-light: #D0D1CD;
+// $beige-lighter: #EFF0EB;
+//
+// // Update Bulma's global variables
+// $family-sans-serif: "Lato", sans-serif;
+// // $grey-dark: #446;
+// // $grey-light: #ddf;
+// // $primary: darken($blue, 20%);
+//
+// $light-grey: #B8B89F;
+// $grey: #52656B;
+// $yellow: #CDFF00;
+// $red: #FF3B77;
+// $blue: #209cee;
+// $white: #FFFFFF;
+//
+// $info: $blue;
+// $succes: $green;
+// $warning: $yellow;
+// $danger: darken($red, 20%);
+//
+// $primary: $red;
+// $link: $yellow;
+// // $widescreen-enabled: false;
+// // $fullhd-enabled: false;
+//
+// // Update some of Bulma's component variables
+$title-color:#ff5147;
+$body-background-color: #0f1b31;
+// $body-background-color: lighten($grey, 50%);
+// // $control-border-width: 2px;
+// // $input-border-color: transparent;
+// // $input-shadow: none;
+// $navbar-background-color: $primary;
+// $navbar-item-color: black;
+// $navbar-item-hover-color: black;
+// $navbar-item-active-color: black;
+// // $navbar-item-background-color: darken($navbar-background-color, 20%);
+// // $footer-background-color: $primary;
+// // $navbar-item-active-background-color: $primary;
+//
+// // $navbar-dropdown-item-active-background-color: $primary;
+// //
+// // $navbar-item-img-max-height: 2em;
+// $navbar-breakpoint: 600px;
+
+// Import only what you need from Bulma
+// @import "../../node_modules/bulma/sass/utilities/_all.sass";
+// @import "../../node_modules/bulma/sass/base/_all.sass";
+// @import "../../node_modules/bulma/sass/elements/button.sass";
+// @import "../../node_modules/bulma/sass/elements/container.sass";
+// @import "../../node_modules/bulma/sass/elements/form.sass";
+// @import "../../node_modules/bulma/sass/elements/title.sass";
+// @import "../../node_modules/bulma/sass/elements/tag.sass";
+// @import "../../node_modules/bulma/sass/elements/image.sass";
+// @import "../../node_modules/bulma/sass/components/navbar.sass";
+// @import "../../node_modules/bulma/sass/components/card.sass";
+// @import "../../node_modules/bulma/sass/components/level.sass";
+// @import "../../node_modules/bulma/sass/layout/section.sass";
+// @import "../../node_modules/bulma/sass/grid/columns.sass";
+// @import "../../node_modules/bulma/sass/grid/columns.sass";
+@import "../../node_modules/bulma/bulma.sass";
+
+body #root{
+  font-family: 'Laila', serif;
+  .navbar {
+    .logo {
+      width: 50px;
+      height: 30px;
+      background: url("https://static.thenounproject.com/png/120147-200.png");
+      // background: url("../components/assets/120147-200.png");
+      background-repeat: no-repeat;
+      background-position: cover;
+      background-size: contain;
+    }
+    .searchbar {
+      margin-top: 7px;
+      min-width: 500px;
+    }
+  }
+}
+
+.tile.article{
+  background-color: #ff5146;
+}
