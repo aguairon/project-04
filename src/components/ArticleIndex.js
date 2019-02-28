@@ -6,7 +6,7 @@ const ArticlesIndex = ({ articles }) => {
     <section className="section">
       <div className="container">
         <h1 className="title is-1">Articles</h1>
-        <div className="tile is-ancestor">
+        <div className="tile is-ancestor is-vertical">
           {articles.map(article => <div key={article.id} className="tile">
             <ArticlePanel {...article}/>
           </div>)}

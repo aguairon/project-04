@@ -49,7 +49,14 @@ with app.app_context():
     athos.save()
 
     message1 = Message(
-        content="blah",
+        content="This is a very nice article, Thanks for posting",
+        sender=begona,
+        article=aeternae
+    )
+    message1.save()
+
+    message1 = Message(
+        content="An image would be nice though",
         sender=begona,
         article=aeternae
     )

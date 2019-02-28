@@ -23,11 +23,12 @@ class ArticleShow extends React.Component {
               {this.state.article.content}
             </div>
           </article>
-          <div className="tile is-parent">
+          <div className="tile is-parent is-vertical">
             {this.state.article.messages.map(message =>
-              <article key={message.id} className="tile is-child">
+              <article key={message.id} className="tile message is-child notification is-danger">
                 <div className="content">
-                  {message.content}
+                  <p>{message.content}</p>
+                  <p>{message.sender.username} <span>{message.updated_at}</span></p>
                 </div>
               </article>
             )}
