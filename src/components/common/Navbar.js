@@ -10,7 +10,7 @@ class Navbar extends React.Component {
       navbarOpen: false
     }
 
-    // this.logout = this.logout.bind(this)
+    this.logout = this.logout.bind(this)
     this.toggleNavbar = this.toggleNavbar.bind(this)
   }
 
@@ -37,11 +37,18 @@ class Navbar extends React.Component {
             <Link className="navbar-item" to="/">
               <div className="logo"></div>
             </Link>
-            <form>
+            <form className="searchbar" onSubmit={this.props.handleSubmit}>
               <div className="field searchbar">
                 <div className="control">
                   <p className="control has-icons-left">
-                    <input className="input" type="text" placeholder="Text input" />
+                    <input
+                      className="input"
+                      type="text"
+                      placeholder="Search"
+                      value={this.props.searchValue}
+                      onChange={this.props.handleChange}
+                      name='search'
+                    />
                     <span className="icon is-small is-left" >
                       <i className="fas fa-search" aria-hidden="true"></i>
                     </span>
@@ -57,7 +64,8 @@ class Navbar extends React.Component {
           </div>
           <div className={`navbar-menu ${this.state.navbarOpen ? 'is-active' : ''}`}>
             <div className="navbar-end">
-              <Link className="navbar-item" to="/cheeses">Discover the creatures</Link>
+              <Link className="navbar-item" to="/articles">Discover the creatures</Link>
+              <Link className="navbar-item" to="/login">Login</Link>
               <a className="navbar-item" onClick={this.logout}>Logout</a>
             </div>
           </div>
@@ -68,9 +76,3 @@ class Navbar extends React.Component {
 }
 
 export default withRouter(Navbar)
-
-
-// {Auth.isAuthenticated() && <Link className="navbar-item" to="/cheeses/new">Add a cheese</Link>}
-// {!Auth.isAuthenticated() && <Link className="navbar-item" to="/register">Register</Link>}
-// {!Auth.isAuthenticated() &&<Link className="navbar-item" to="/login">Login</Link>}
-// {Auth.isAuthenticated() &&<a className="navbar-item" onClick={this.logout}>Logout</a>}
