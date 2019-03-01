@@ -71,7 +71,37 @@ $body-background-color: #0f1b31;
 // @import "../../node_modules/bulma/sass/grid/columns.sass";
 @import "../../node_modules/bulma/bulma.sass";
 
-body #root{
+
+.Modal {
+  position: absolute;
+  top: 150px;
+  left: 30%;
+  right: 30%;
+  bottom: 150px;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  .container {
+    max-width: 400px;
+  }
+  .is-4 {
+    color: #179aaa;
+  }
+  .button.is-info {
+    background-color: #179aaa;
+  }
+  .input {
+    border-color: #179aaa;
+    margin: 0 auto;
+  }
+  a {
+    margin: 0 auto;
+    color: #179aaa;
+  }
+}
+
+
+body #root {
   font-family: 'Laila', serif;
   .navbar {
     .logo {
@@ -83,10 +113,10 @@ body #root{
       background-position: cover;
       background-size: contain;
     }
-    .searchbar {
-      margin-top: 4px;
-      min-width: 500px;
-    }
+  }
+
+  .searchbar {
+    padding-bottom: 10px;
   }
 }
 
@@ -95,5 +125,5 @@ body #root{
 }
 
 .tile.message {
-  background-color: green;
+  background-color: #bf392d;
 }

@@ -24,13 +24,8 @@ class Navbar extends React.Component {
     }
   }
 
-  // logout() {
-  //   Auth.removeToken()
-  //   this.props.history.push('/')
-  // }
-
   render() {
-    const  {handleSubmit, searchValue, handleChange, logout} = this.props
+    const  {logout} = this.props
     return (
       <nav className="navbar">
         <div className="container">
@@ -38,25 +33,6 @@ class Navbar extends React.Component {
             <Link className="navbar-item" to="/">
               <div className="logo"></div>
             </Link>
-            <form className="searchbar" onSubmit={handleSubmit}>
-              <div className="field searchbar">
-                <div className="control">
-                  <p className="control has-icons-left">
-                    <input
-                      className="input"
-                      type="text"
-                      placeholder="Search"
-                      value={searchValue}
-                      onChange={handleChange}
-                      name='search'
-                    />
-                    <span className="icon is-small is-left" >
-                      <i className="fas fa-search" aria-hidden="true"></i>
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </form>
             <a className={`navbar-burger ${this.state.navbarOpen ? 'is-active' : ''}`} onClick={this.toggleNavbar}>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
@@ -66,7 +42,6 @@ class Navbar extends React.Component {
           <div className={`navbar-menu ${this.state.navbarOpen ? 'is-active' : ''}`}>
             <div className="navbar-end">
               <Link className="navbar-item" to="/articles">Discover the creatures</Link>
-              <Link className="navbar-item" to="/register">Register</Link>
               <a className="navbar-item" onClick={logout}>Logout</a>
             </div>
           </div>

@@ -1,19 +1,18 @@
 import React from 'react'
 
-const Register = ({ handleSubmit, data, handleChange}) => {
-  console.log(data)
+const Register = ({ handleSubmit, data, handleChange, handleToggle}) => {
   return (
     <main className="section">
       <div className="container">
         <form onSubmit={handleSubmit}>
-          <h2>Register</h2>
+          <h2 className="title is-4">Register</h2>
           <div className="field">
             <div className="control">
               <input
                 className="input"
                 name="username"
                 placeholder="Username"
-                value={data.username}
+                value={data.username || ''}
                 onChange={handleChange}
               />
             </div>
@@ -24,7 +23,7 @@ const Register = ({ handleSubmit, data, handleChange}) => {
                 className="input"
                 name="email"
                 placeholder="Email"
-                value={data.email}
+                value={data.email || ''}
                 onChange={handleChange}
               />
             </div>
@@ -36,7 +35,7 @@ const Register = ({ handleSubmit, data, handleChange}) => {
                 className="input"
                 name="password"
                 placeholder="Password"
-                value={data.password}
+                value={data.password || ''}
                 onChange={handleChange}
               />
             </div>
@@ -48,7 +47,7 @@ const Register = ({ handleSubmit, data, handleChange}) => {
                 className="input"
                 name="password_confirmation"
                 placeholder="Password confirmation"
-                value={data.password_confirmation}
+                value={data.password_confirmation || ''}
                 onChange={handleChange}
               />
             </div>
@@ -56,6 +55,12 @@ const Register = ({ handleSubmit, data, handleChange}) => {
           <button className="button is-info">Register</button>
 
         </form>
+        <a
+          className="swap_form"
+          onClick={handleToggle}
+        >
+        Already a member? Login in
+        </a>
       </div>
     </main>
   )

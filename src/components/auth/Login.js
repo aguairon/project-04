@@ -1,18 +1,18 @@
 import React from 'react'
 
-const Login = ({ handleSubmit, data, handleChange, error}) => {
+const Login = ({ handleSubmit, data, handleChange, error, handleToggle }) => {
   return (
     <main className="section">
       <div className="container">
         <form onSubmit={handleSubmit}>
-          <h2>Login</h2>
+          <h2 className="title is-4">Login</h2>
           <div className="field">
             <div className="control">
               <input
                 className="input"
                 name="email"
                 placeholder="Email"
-                value={data.email}
+                value={data.email || ''}
                 onChange={handleChange}
               />
             </div>
@@ -24,7 +24,7 @@ const Login = ({ handleSubmit, data, handleChange, error}) => {
                 className="input"
                 name="password"
                 placeholder="Password"
-                value={data.password}
+                value={data.password || ''}
                 onChange={handleChange}
               />
             </div>
@@ -33,6 +33,12 @@ const Login = ({ handleSubmit, data, handleChange, error}) => {
           <button className="button is-info">Log In</button>
 
         </form>
+        <a
+          className="swap_form"
+          onClick={handleToggle}
+        >
+          Not a member? Please register
+        </a>
       </div>
     </main>
   )
