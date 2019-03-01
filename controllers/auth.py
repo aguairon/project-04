@@ -22,8 +22,10 @@ def register():
 def login():
     data = request.get_json()
     user = User.query.filter_by(email=data.get('email')).first()
-    if not user or not user.validate_password(data.get('password', '')):
-        return jsonify({'message': 'Unauthorized'}), 401
+    if not user:
+        return jsonify({'message': 'This user does not exist'}), 401
+    if not user.validate_password(data.get('password', '')):
+        return jsonify({'message': 'Please try again'}), 401
 
     return jsonify({
         'message': 'Welcome back {}!'.format(user.username),

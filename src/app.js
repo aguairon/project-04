@@ -10,6 +10,7 @@ import Navbar from './components/common/Navbar'
 import ArticleIndex from './components/ArticleIndex'
 import ArticleShow from './components/ArticleShow'
 import Login from './components/auth/Login'
+import Register from './components/auth/Register'
 
 
 // const input = '# This is a header\n\nAnd this is a paragraph\n\nThis block of Markdown contains <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, and will require the <code>html-parser</code> AST plugin to be loaded, in addition to setting the <code class="prop">escapeHtml</code> property to false.'
@@ -25,15 +26,15 @@ class App extends React.Component {
       filtered_articles: [],
       show: false,
       data: {
-        email: '',
-        password: ''
-      }
+      },
+      error: ''
 
     }
     this.handleLoginChange = this.handleLoginChange.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSearchChange = this.handleSearchChange.bind(this)
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
+    this.logout = this.logout.bind(this)
   }
   componentDidMount() {
     axios.get('/api/articles')
@@ -48,19 +49,19 @@ class App extends React.Component {
     this.setState({filtered_articles: filtered})
   }
 
-  handleChange({target: {name, value}}){
+  handleSearchChange({target: {name, value}}){
     this.setState({...this.state, [name]: value})
     this.filterArticles()
   }
 
-  handleSubmit(e){
+  handleSearchSubmit(e){
     e.preventDefault(e)
     this.filterArticles()
   }
 
   handleLoginChange({target: { value, name }}){
     const data = {...this.state.data, [name]: value}
-    this.setState({ data })
+    this.setState({ data, error: '' })
   }
 
   handleLoginSubmit(e){
@@ -69,10 +70,14 @@ class App extends React.Component {
       .post('api/login', this.state.data)
       .then((res)=>{
         Auth.setToken(res.data.token)
-        this.setState({show: false})
-        this.props.history.push('/articles')
+        this.setState({show: false, data: {}})
       })
-      .catch(err => alert(err.message))
+      .catch(err => this.setState({error: err.response.data.message}))
+  }
+
+  logout() {
+    Auth.removeToken()
+    this.setState({show: true})
   }
 
   render() {
@@ -82,23 +87,42 @@ class App extends React.Component {
         <main>
           {Auth.isAuthenticated() &&
           <Navbar
-            handleChange={this.handleChange}
+            handleChange={this.handleSearchChange}
             value={this.state.searchValue}
-            handleSubmit={this.handleSubmit}
+            handleSubmit={this.handleSearchSubmit}
+            logout={this.logout}
           /> }
-          <Modal
-            isOpen={!Auth.isAuthenticated()}
-            onRequestClose={this.closeModal}
-            contentLabel="Example Modal"
-          >
-
-            <Login handleSubmit={this.handleLoginSubmit} handleChange={this.handleLoginChange} data={this.state.data}/>
+          <Modal isOpen={!Auth.isAuthenticated()} >
+            <Login
+              handleSubmit={this.handleLoginSubmit}
+              handleChange={this.handleLoginChange}
+              data={this.state.data}
+              error={this.state.error}
+            />
+            <Register
+              handleSubmit={this.handleLoginSubmit}
+              handleChange={this.handleLoginChange}
+              data={this.state.data}
+            />
           </Modal>
 
           <Switch>
+            <Route
+              path="/register"
+              component={() => <Register
+                handleSubmit={this.handleLoginSubmit}
+                handleChange={this.handleLoginChange}
+                data={this.state.data}
+                error={this.state.error}
+              />}
+            />
             <Route path="/articles/:id" component={ArticleShow} />
-            <Route path="/login" component={Login} />
-            <Route path="/" component={() => <ArticleIndex articles={this.state.filtered_articles} />} />
+            <Route
+              path="/"
+              component={() =>
+                <ArticleIndex articles={this.state.filtered_articles}
+                />}
+            />
           </Switch>
         </main>
       </BrowserRouter>
