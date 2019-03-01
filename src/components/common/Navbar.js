@@ -30,6 +30,7 @@ class Navbar extends React.Component {
   // }
 
   render() {
+    const  {handleSubmit, searchValue, handleChange, logout} = this.props
     return (
       <nav className="navbar">
         <div className="container">
@@ -37,7 +38,7 @@ class Navbar extends React.Component {
             <Link className="navbar-item" to="/">
               <div className="logo"></div>
             </Link>
-            <form className="searchbar" onSubmit={this.props.handleSubmit}>
+            <form className="searchbar" onSubmit={handleSubmit}>
               <div className="field searchbar">
                 <div className="control">
                   <p className="control has-icons-left">
@@ -45,8 +46,8 @@ class Navbar extends React.Component {
                       className="input"
                       type="text"
                       placeholder="Search"
-                      value={this.props.searchValue}
-                      onChange={this.props.handleChange}
+                      value={searchValue}
+                      onChange={handleChange}
                       name='search'
                     />
                     <span className="icon is-small is-left" >
@@ -66,7 +67,7 @@ class Navbar extends React.Component {
             <div className="navbar-end">
               <Link className="navbar-item" to="/articles">Discover the creatures</Link>
               <Link className="navbar-item" to="/register">Register</Link>
-              <a className="navbar-item" onClick={this.props.logout}>Logout</a>
+              <a className="navbar-item" onClick={logout}>Logout</a>
             </div>
           </div>
         </div>

@@ -14,17 +14,18 @@ class ArticleShow extends React.Component {
   }
   render() {
     if(!this.state.article) return null
+    const  {title, content, messages} = this.state.article
     return(
       <section className="section">
         <div className="container">
-          <h1 className='title is-1'>{this.state.article.title}</h1>
+          <h1 className='title is-1'>{title}</h1>
           <article className="tile article is-child notification is-danger">
             <div className="content">
-              {this.state.article.content}
+              {content}
             </div>
           </article>
           <div className="tile is-parent is-vertical">
-            {this.state.article.messages.map(message =>
+            {messages.map(message =>
               <article key={message.id} className="tile message is-child notification is-danger">
                 <div className="content">
                   <p>{message.content}</p>
