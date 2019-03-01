@@ -118,6 +118,19 @@ body #root {
   .searchbar {
     padding-bottom: 10px;
   }
+
+  .likes {
+    height: 50px;
+    color: green;
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    p {
+      padding-left: 10px;
+      padding-top: 15px;
+    }
+  }
 }
 
 .tile.article {

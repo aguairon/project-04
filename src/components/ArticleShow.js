@@ -24,6 +24,12 @@ class ArticleShow extends React.Component {
               {content}
             </div>
           </article>
+          <div className='likes'>
+            <span className="icon likes is-big is-left" >
+              <i className="fas fa-2x fa-thumbs-up"></i>
+            </span>
+            <p>This has been liked by {this.state.article.liked_by.length} other user</p>
+          </div>
           <div className="tile is-parent is-vertical">
             {messages.map(message =>
               <article key={message.id} className="tile message is-child notification is-danger">

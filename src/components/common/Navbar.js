@@ -10,7 +10,6 @@ class Navbar extends React.Component {
       navbarOpen: false
     }
 
-    // this.logout = this.logout.bind(this)
     this.toggleNavbar = this.toggleNavbar.bind(this)
   }
 

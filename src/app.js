@@ -20,16 +20,9 @@ class App extends React.Component {
 
     this.state = {
       show_modal: false,
-      articles: [],
-      data: {
-      },
-      error: '',
       already_member: false
     }
-    this.handleLoginChange = this.handleLoginChange.bind(this)
-    this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
-    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.logout = this.logout.bind(this)
   }
   componentDidMount() {
@@ -37,45 +30,17 @@ class App extends React.Component {
       .then(res => this.setState({ articles: res.data, filtered_articles: res.data }))
   }
 
-  handleLoginChange({target: { value, name }}){
-    const data = {...this.state.data, [name]: value}
-    this.setState({ data, error: '' })
-  }
-
-  handleLoginSubmit(e){
-    e.preventDefault()
-    axios
-      .post('api/login', this.state.data)
-      .then((res)=>{
-        Auth.setToken(res.data.token)
-        this.setState({show_modal: false, data: {}})
-      })
-      .catch(err => this.setState({error: err.response.data.message}))
-  }
-
-  handleRegisterSubmit(e){
-    e.preventDefault()
-    axios
-      .post('api/register', this.state.data)
-      .then((res)=>{
-        Auth.setToken(res.data.token)
-        this.setState({show_modal: false, data: {}})
-      })
-      .catch(err => this.setState({error: err.response.data.message}))
-  }
-
   handleToggle() {
     this.setState({already_member: !this.state.already_member})
   }
 
   logout() {
-    this.props.history('/')
     Auth.removeToken()
     this.setState({show_modal: true})
   }
 
   render() {
-    if(this.state.articles.length < 1) return <h1>Loading...</h1>
+    if(!this.state.articles) return <h1>Loading...</h1>
     return (
       <BrowserRouter>
         <main>
@@ -97,9 +62,6 @@ class App extends React.Component {
               handleToggle={this.handleToggle}
             />}
             {!this.state.already_member &&<Register
-              handleSubmit={this.handleRegisterSubmit}
-              handleChange={this.handleLoginChange}
-              data={this.state.data}
               handleToggle={this.handleToggle}
             />}
           </Modal>
@@ -109,12 +71,7 @@ class App extends React.Component {
             <Route
               path="/articles"
               component={() =>
-                <ArticleIndex
-                  articles={this.state.filtered_articles}
-                  handleChange={this.handleSearchChange}
-                  value={this.state.searchValue}
-                  handleSubmit={this.handleSearchSubmit}
-                />}
+                <ArticleIndex />}
             />
           </Switch>
         </main>
