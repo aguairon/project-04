@@ -153,6 +153,9 @@ body #root {
   background-color: #ff5146;
 }
 
-.tile.message {
-  background-color: #bf392d;
+.messages {
+  .tile.message {
+    background-color: #bf392d;
+}
+
 }
