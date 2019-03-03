@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import ArticlePanel from '../articles/ArticlePanel'
+import ArticleSearchBar from '../articles/ArticleSearchBar'
 
 class ArticlesIndex extends React.Component {
   constructor() {
@@ -42,25 +43,10 @@ class ArticlesIndex extends React.Component {
       <section className="section">
         <div className="container">
           <h1 className="title is-1">Articles</h1>
-          <form className="searchbar" onSubmit={this.handleSubmit}>
-            <div className="field searchbar">
-              <div className="control">
-                <p className="control has-icons-left">
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="Search"
-                    value={this.searchValue}
-                    onChange={this.handleChange}
-                    name='search'
-                  />
-                  <span className="icon is-small is-left" >
-                    <i className="fas fa-search" aria-hidden="true"></i>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </form>
+          <ArticleSearchBar
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            searchValue={this.searchValue}/>
           <div className="tile is-ancestor is-vertical">
             {this.state.filtered_articles.map(article => <div key={article.id} className="tile">
               <ArticlePanel {...article}/>
