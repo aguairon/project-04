@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import MessagesIndex from '../../components/messages/MessagesIndex'
+import MessageForm from '../../components/messages/MessageForm'
 import ArticleLike from '../articles/ArticleLike'
 
 class ArticleShow extends React.Component {
@@ -54,12 +55,7 @@ class ArticleShow extends React.Component {
           </article>
           <ArticleLike likedBy={this.state.article.liked_by} handleClick={this.handleClick} error={this.state.error}/>
           <div className="tile is-parent is-vertical">
-            <div className="field">
-              <label className="label">Message</label>
-              <div className="control">
-                <textarea className="textarea" placeholder="Textarea"></textarea>
-              </div>
-            </div>
+            <MessageForm />
             <MessagesIndex messages={messages} />
           </div>
         </div>
