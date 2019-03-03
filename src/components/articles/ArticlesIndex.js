@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import ArticlePanel from '../components/ArticlePanel'
+import ArticlePanel from '../articles/ArticlePanel'
 
 class ArticlesIndex extends React.Component {
   constructor() {

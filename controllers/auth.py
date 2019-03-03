@@ -1,17 +1,27 @@
 from flask import Blueprint, jsonify, request
 from models.user import User, UserSchema
+from sqlalchemy.exc import IntegrityError
+from werkzeug.exceptions import BadRequest
 
 api = Blueprint('auth', __name__)
 user_schema = UserSchema()
 
 @api.route('/register', methods=['POST'])
 def register():
-    user, errors = user_schema.load(request.get_json())
+    try:
+        user, errors = user_schema.load(request.get_json())
+        if errors:
+            return jsonify(errors), 422
 
-    if errors:
-        return jsonify(errors), 422
-
-    user.save()
+        user.save()
+    except BadRequest as e:
+        return jsonify({
+            'message': 'Bad JSON'
+        }), 422
+    except IntegrityError as e:
+        return jsonify({
+            'message': 'User already exists'
+        }), 422
 
     return jsonify({
         'message': 'Registration successful',

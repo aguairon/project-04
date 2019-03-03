@@ -37,7 +37,7 @@ def update(article_id):
     article = Article.query.get(article_id)
 
     if article.creator != g.current_user:
-        return jsonify({'message':'Unauthorized'}), 401
+        return jsonify({'message':'Unauthorized'}), 403
     article, errors = article_schema.load(request.get_json(), instance=article)
 
     if errors:
@@ -53,7 +53,7 @@ def like(article_id):
     article = Article.query.get(article_id)
 
     if article.creator == g.current_user:
-        return jsonify({'message':'You own this article'}), 401
+        return jsonify({'message':'You own this article'}), 403
 
     article.liked_by.append(g.current_user)
 
@@ -67,7 +67,7 @@ def unlike(article_id):
     article = Article.query.get(article_id)
 
     if article.creator == g.current_user:
-        return jsonify({'message':'You own this article'}), 401
+        return jsonify({'message':'You own this article'}), 403
 
     if g.current_user in article.liked_by:
         article.liked_by.remove(g.current_user)
@@ -84,7 +84,7 @@ def delete(article_id):
     if not article:
         return jsonify({'message': 'Not found'}), 404
     if  article.creator != g.current_user:
-        return jsonify({'message':'Unauthorized'}), 401
+        return jsonify({'message':'You have not written this article'}), 403
 
 
     article.remove()

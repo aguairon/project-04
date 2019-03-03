@@ -119,16 +119,32 @@ body #root {
     padding-bottom: 10px;
   }
 
+  .likes.liked_by_user {
+    .button {
+      background-color: white;
+      border-color: green;
+      .icon {
+        color: green;
+      }
+    }
+  }
   .likes {
     height: 50px;
     color: green;
     margin-left: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 15px;
+    padding-bottom: 45px;
     display: flex;
     p {
       padding-left: 10px;
       padding-top: 15px;
+    }
+    .button {
+      background-color: white;
+      border-color: green;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }

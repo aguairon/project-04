@@ -29,6 +29,11 @@ class Auth {
     const now = Math.floor(Date.now() / 1000)
     return now < payload.exp
   }
+
+  static isCurrentUser(id){
+    if(this.getPayload().sub === id && this.isAuthenticated()) return true
+    return false
+  }
 }
 
 export default Auth

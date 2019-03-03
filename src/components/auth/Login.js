@@ -7,7 +7,7 @@ class Login extends React.Component {
     super()
     this.state = {
       data: {},
-      error: ''
+      errors: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -15,7 +15,7 @@ class Login extends React.Component {
 
   handleChange({target: { value, name }}){
     const data = {...this.state.data, [name]: value}
-    this.setState({ data, error: '' })
+    this.setState({ data, errors: '' })
   }
 
   handleSubmit(e){
@@ -24,10 +24,11 @@ class Login extends React.Component {
       .post('api/login', this.state.data)
       .then((res)=>{
         Auth.setToken(res.data.token)
-        this.setState({show_modal: false, data: {}})
-        this.props.history.push('/')
+        this.setState({ data: {}})
+        this.props.changeState()
+
       })
-      .catch(err => this.setState({error: err.response.data.message}))
+      .catch(err => this.setState({errors: err.response.data}))
   }
 
   render() {
@@ -58,7 +59,7 @@ class Login extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.error && <small className="help is-danger">{this.state.error}</small>}
+              {this.state.errors.message && <small className="help is-danger">{this.state.errors.message}</small>}
             </div>
             <button className="button is-info">Log In</button>
 

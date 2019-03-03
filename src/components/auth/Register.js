@@ -6,10 +6,8 @@ class Register extends React.Component {
   constructor() {
     super()
     this.state = {
-      data: {
-        
-      },
-      error: ''
+      data: {},
+      errors: ''
     }
 
 
@@ -19,7 +17,7 @@ class Register extends React.Component {
 
   handleChange({target: { value, name }}){
     const data = {...this.state.data, [name]: value}
-    this.setState({ data, error: '' })
+    this.setState({ data, errors: '' })
   }
 
   handleSubmit(e){
@@ -28,12 +26,14 @@ class Register extends React.Component {
       .post('api/register', this.state.data)
       .then((res)=>{
         Auth.setToken(res.data.token)
-        this.setState({show_modal: false, data: {}})
+        this.setState({ data: {}})
+        this.props.changeState()
       })
-      .catch(err => this.setState({error: err.response.data.message}))
+      .catch(err => this.setState({errors: err.response.data}))
   }
 
   render() {
+    console.log(this.state.errors.message)
     return (
       <main className="section">
         <div className="container">
@@ -49,6 +49,7 @@ class Register extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
+              {this.state.errors.username && <small className="help is-danger">{this.state.errors.username}</small>}
             </div>
             <div className="field">
               <div className="control">
@@ -60,6 +61,7 @@ class Register extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
+              {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
             </div>
             <div className="field">
               <div className="control">
@@ -72,6 +74,7 @@ class Register extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
+              {this.state.errors.password && <small className="help is-danger">{this.state.errors.password}</small>}
             </div>
             <div className="field">
               <div className="control">
@@ -84,6 +87,8 @@ class Register extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
+              {this.state.errors.password_confirmation && <small className="help is-danger">{this.state.errors.password_confirmation}</small>}
+              {this.state.errors.message && <small className="help is-danger">{this.state.errors.message}</small>}
             </div>
             <button className="button is-info">Register</button>
 
@@ -92,7 +97,7 @@ class Register extends React.Component {
             className="swap_form"
             onClick={this.props.handleToggle}
           >
-          Already a member? Login in
+          Already a member? Sign in
           </a>
         </div>
       </main>

@@ -15,7 +15,7 @@ def secure_route(func):
         user = User.query.get(payload.get('sub'))
 
         if not user:
-            return jsonify({'message': 'Unauthorized'}), 401
+            return jsonify({'message': 'Unauthorized'}), 402
 
         g.current_user = user
 
