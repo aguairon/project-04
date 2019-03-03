@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import MessagesIndex from '../../components/messages/MessagesIndex'
+import ArticleLike from '../articles/ArticleLike'
 
 class ArticleShow extends React.Component {
   constructor() {
@@ -35,7 +36,7 @@ class ArticleShow extends React.Component {
         .delete(`/api/articles/${this.props.match.params.id}/like`,
           { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
         .then(res => console.localeCompare(res))
-        .catch(err => this.setState({error: err.response.status}))
+        .catch(err => this.setState({error: err.response}))
     }
   }
 
@@ -51,19 +52,7 @@ class ArticleShow extends React.Component {
               {content}
             </div>
           </article>
-          <div className={this.state.article.liked_by.some(like =>
-            Auth.isCurrentUser(like.id)) ? 'likes liked_by_user' : 'likes'}>
-            <button className='button' onClick={this.handleClick}>
-              <span className="icon is-big is-left" >
-                <i className="fas fa-2x fa-thumbs-up"></i>
-              </span>
-            </button>
-            {this.state.error === 403 && <p>You cannot like your own article.</p>}
-            {this.state.article.liked_by.length > 0 && this.state.article.liked_by.map(like => Auth.isCurrentUser(like.id)) &&<p>You have liked this.</p> }
-            {this.state.article.liked_by.length === 1 && <p>This article has been liked once.</p>}
-            {this.state.article.liked_by.length > 1 && <p>This article has been liked {this.state.article.liked_by.length} times.</p>}
-            {this.state.article.liked_by.length === 0 && <p>This article has not been liked yet.</p>}
-          </div>
+          <ArticleLike likedBy={this.state.article.liked_by} handleClick={this.handleClick} error={this.state.error}/>
           <div className="tile is-parent is-vertical">
             <div className="field">
               <label className="label">Message</label>

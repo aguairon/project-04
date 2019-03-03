@@ -48,6 +48,20 @@ with app.app_context():
     )
     athos.save()
 
+    ba = Article(
+        title='Ba Jiao Gui',
+        #pylint: disable=C0301
+        content="Chinese folklore features a rich variety of ghosts, monsters, and other supernatural creatures. According to traditional beliefs a ghost is the spirit form of a person who has died. Ghosts are typically malevolent and will cause harm to the living if provoked. Many Chinese folk beliefs about ghosts have been adopted into the mythologies and folklore of neighboring East Asian cultures, notably Japan, Korea, and Vietnam. Beliefs about ghosts are closely associated with Chinese ancestor worship, where much have been incorporated into Buddhism and in turn influenced and created uniquely Chinese Buddhist beliefs about the supernatural.Traditionally, the Chinese believed that it was possible to contact the spirits of deceased relatives and ancestors through a medium. It was believed that the spirits of the deceased can help them if they were properly respected and rewarded. The annual Hungry Ghost Festival, celebrated in Greater China (including Hong Kong and Macao Special Administrative Regions and Taiwan), Malaysia, Singapore, and elsewhere in the Chinese diaspora, is dedicated to performing rituals to honor and remember the spirits of the dead. On this day ghosts and other supernatural creatures come out from the Underworld and move among the living. Families prepare food and other offerings and place them on a shrine dedicated to deceased relatives. Incense and paper money are burned and other rituals are performed in hopes that the spirits of the dead will protect and bring good luck to the family.Ghosts are described in classical Chinese texts, and continue to be depicted in modern literature and movies.",
+        creator=greg
+    )
+
+    bannik = Article(
+        title='Bannik',
+        #pylint: disable=C0301
+        content="Bannik is the bathhouse (banya) spirit in Slavic mythology.Slavic bathhouses resemble saunas, with an inner steaming room and an outer changing room. A place where women gave birth and practiced divinations, the bathhouse was strongly endowed with vital forces. The third firing (or fourth, depending on tradition) was reserved for the Bannik, and, given his inclination to invite demons and forest spirits to share his bath, no Christian images were allowed lest they offend the occupants. If disturbed by an intruder while washing, the Bannik might pour boiling water over him, or even strangle him.The Bannik had the ability to predict the future. One consulted him by standing with one's back exposed in the half-open door of the bath. The Bannik would gently stroke one's back if all boded well; but if trouble lay ahead, he would strike with his claws",
+        creator=greg
+    )
+
     message1 = Message(
         content="This is a very nice article, Thanks for posting",
         sender=begona,
