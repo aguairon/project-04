@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-
-// import Auth from '../../lib/Auth'
+import Auth from '../../lib/Auth'
+import axios from 'axios'
 
 class Navbar extends React.Component {
   constructor() {
@@ -11,10 +11,23 @@ class Navbar extends React.Component {
     }
 
     this.toggleNavbar = this.toggleNavbar.bind(this)
+    this.logout = this.logout.bind(this)
   }
 
   toggleNavbar() {
     this.setState({ navbarOpen: !this.state.navbarOpen})
+  }
+
+  logout() {
+    Auth.removeToken()
+    this.props.changeState()
+  }
+
+  componentDidMount() {
+    axios
+      .get(`api/users/${Auth.getPayload().sub}`)
+      .then(res => this.setState({user: res.data}))
+      .catch(err => console.log(err))
   }
 
   componentDidUpdate(prevProps) {
@@ -24,7 +37,8 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const  {logout} = this.props
+    console.log(Auth.getPayload())
+
     return (
       <nav className="navbar">
         <div className="container">
@@ -42,7 +56,8 @@ class Navbar extends React.Component {
             <div className="navbar-start">
               <Link className="navbar-item" to="/articles">Discover the creatures</Link></div>
             <div className="navbar-end">
-              <a className="navbar-item" onClick={logout}>Logout</a>
+              <a className="navbar-item">{this.state.user ? 'Hello ' + this.state.user.username : ''}</a>
+              <a className="navbar-item" onClick={this.logout}>Logout</a>
             </div>
           </div>
         </div>

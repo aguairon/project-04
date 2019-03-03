@@ -25,7 +25,6 @@ class App extends React.Component {
     }
     this.changeState = this.changeState.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
-    this.logout = this.logout.bind(this)
   }
   componentDidMount() {
     axios.get('/api/articles')
@@ -33,16 +32,11 @@ class App extends React.Component {
   }
 
   changeState(){
-    this.setState({...this.state, show_modal: false })
+    this.setState({...this.state, show_modal: !this.state.show_modal })
   }
 
   handleToggle() {
     this.setState({already_member: !this.state.already_member})
-  }
-
-  logout() {
-    Auth.removeToken()
-    this.setState({show_modal: true})
   }
 
   render() {
@@ -52,7 +46,7 @@ class App extends React.Component {
         <main>
           {Auth.isAuthenticated() &&
           <Navbar
-            logout={this.logout}
+            changeState ={this.changeState}
           /> }
           <Modal
             isOpen={!Auth.isAuthenticated()}
@@ -64,7 +58,6 @@ class App extends React.Component {
               changeState ={this.changeState}
             />}
             {!this.state.already_member &&<Register
-
               handleToggle={this.handleToggle}
               changeState ={this.changeState}
             />}
