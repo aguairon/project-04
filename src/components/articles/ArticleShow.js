@@ -11,32 +11,32 @@ class ArticleShow extends React.Component {
 
     this.state = {}
 
-    this.handleClick = this.handleClick.bind(this)
+    this.handleLike = this.handleLike.bind(this)
   }
 
   componentDidMount() {
     axios.get(`/api/articles/${this.props.match.params.id}`)
       .then(res => this.setState({ article: res.data }))
   }
+  //
+  // componentDidUpdate() {
+  //   axios.get(`/api/articles/${this.props.match.params.id}`)
+  //     .then(res => this.setState({ article: res.data }))
+  // }
 
-  componentDidUpdate() {
-    axios.get(`/api/articles/${this.props.match.params.id}`)
-      .then(res => this.setState({ article: res.data }))
-  }
-
-  handleClick() {
+  handleLike() {
     if(!this.state.article.liked_by.some(like => Auth.isCurrentUser(like.id))) {
       axios
         .put(`/api/articles/${this.props.match.params.id}/like`,
           {},
           { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
-        .then(res => console.log(res))
+        .then(res => this.setState({ article: res.data }))
         .catch(err => this.setState({error: err.response.status}))
     } else {
       axios
         .delete(`/api/articles/${this.props.match.params.id}/like`,
           { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
-        .then(res => console.localeCompare(res))
+        .then(res => this.setState({ article: res.data }))
         .catch(err => this.setState({error: err.response}))
     }
   }
@@ -53,7 +53,7 @@ class ArticleShow extends React.Component {
               {content}
             </div>
           </article>
-          <ArticleLike likedBy={this.state.article.liked_by} handleClick={this.handleClick} error={this.state.error}/>
+          <ArticleLike liked={this.state.liked} likedBy={this.state.article.liked_by} handleLike={this.handleLike} error={this.state.error}/>
           <div className="tile is-parent is-vertical">
             <MessageForm />
             <MessagesIndex messages={messages} />

@@ -25,7 +25,7 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`api/users/${Auth.getPayload().sub}`)
+      .get('/api/me', { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
       .then(res => this.setState({user: res.data}))
       .catch(err => console.log(err))
   }
@@ -37,8 +37,6 @@ class Navbar extends React.Component {
   }
 
   render() {
-    console.log(Auth.getPayload())
-
     return (
       <nav className="navbar">
         <div className="container">
