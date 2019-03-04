@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../lib/Auth'
 import ArticlePanel from './articles/ArticlePanel'
+import { Link } from 'react-router-dom'
 
 class ProfileShow extends React.Component {
   constructor() {
@@ -46,11 +47,12 @@ class ProfileShow extends React.Component {
             <ArticlePanel {...article}/>
           </div>)}
         </div>}
-        {this.state.likes && <p>{this.state.data.likes[0].title}</p>}
+        {this.state.likes && this.state.data.likes.map(like =>
+          <Link to={`/articles/${like.id}`} key={like.id}>{like.title}</Link>
+        )}
       </section>
     )
   }
 }
-
 
 export default ProfileShow
