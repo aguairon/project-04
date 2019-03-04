@@ -10,7 +10,7 @@
     "serve:flask": "pipenv run flask run -p 4000",
     "test": "mocha --require test/spec_helper --require ignore-styles test/**/*_spec.js --recursive --exit",
     "build": "webpack -p",
-    "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build] || exit 0"
+    "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build || exit 0"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
