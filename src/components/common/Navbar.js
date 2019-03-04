@@ -54,7 +54,7 @@ class Navbar extends React.Component {
             <div className="navbar-start">
               <Link className="navbar-item" to="/articles">Discover the creatures</Link></div>
             <div className="navbar-end">
-              <a className="navbar-item">{this.state.user ? 'Hello ' + this.state.user.username : ''}</a>
+              <Link className="navbar-item" to="/me">{this.state.user ? 'Hello ' + this.state.user.username : ''}</Link>
               <a className="navbar-item" onClick={this.logout}>Logout</a>
             </div>
           </div>

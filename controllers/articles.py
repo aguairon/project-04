@@ -1,11 +1,14 @@
 from flask import Blueprint, request, jsonify, g
 from lib.secure_route import secure_route
 from models.article import Article, ArticleSchema
+from models.message import Message, MessageSchema
 
 api = Blueprint('articles', __name__)
 
 articles_schema = ArticleSchema(many=True)
 article_schema = ArticleSchema()
+messages_schema = MessageSchema(many=True)
+message_schema = MessageSchema()
 
 @api.route('/articles', methods=['GET'])
 def index():
@@ -90,3 +93,17 @@ def delete(article_id):
     article.remove()
 
     return '', 204
+
+@api.route('/articles/<int:article_id>/messages', methods=['POST'])
+# should probably be users and should be in its own controller
+@secure_route
+def send_message(article_id):
+    message, errors = message_schema.load(request.get_json())
+    message.sender_id = g.current_user.id
+    message.article_id = article_id
+
+    if errors:
+        return jsonify(errors), 422
+    message.save()
+
+    return message_schema.jsonify(message)

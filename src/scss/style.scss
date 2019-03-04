@@ -151,11 +151,14 @@ body #root {
 
 .tile.article {
   background-color: #ff5146;
+  font-size: 18px;
+  .createdBy {
+    margin: 20px;
+    text-align: center;
+    font-size: 14px;
+  }
 }
 
-.messages {
-  .tile.message {
-    background-color: #bf392d;
-}
-
+.tile.message {
+  background-color: #bf392d;
 }

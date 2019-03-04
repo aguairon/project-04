@@ -1,13 +1,21 @@
 import React from 'react'
 
-const MessageForm = () => {
+const MessageForm = ({ data, handleChange, handleSubmit}) => {
   return (
-    <div className="field">
-      <label className="label">Message</label>
-      <div className="control">
-        <textarea className="textarea" placeholder="Textarea"></textarea>
+    <form onSubmit={handleSubmit}>
+      <div className="field">
+        <div className="control">
+          <input
+            className="textarea"
+            placeholder="Textarea"
+            name="content"
+            onChange={handleChange}
+            value={data.content}
+          />
+        </div>
       </div>
-    </div>
+      <button className="button is-primary">Save Message</button>
+    </form>
   )
 }
 
