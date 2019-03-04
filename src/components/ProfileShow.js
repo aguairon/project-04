@@ -25,7 +25,10 @@ class ProfileShow extends React.Component {
           <h1 className="title is-1">{this.state.data.username}</h1>
           <h1 className="title is-2">{this.state.data.email}</h1>
         </div>
-        
+        <div className="container articles">
+          <a className="button is-rounded is-danger is-selected">Articles you wrote</a>
+          <a className="button is-rounded">Articles you liked</a>
+        </div>
       </section>
     )
   }
