@@ -122,15 +122,15 @@ body #root {
   .likes.liked_by_user {
     .button {
       background-color: white;
-      border-color: green;
+      border-color: #35786b;
       .icon {
-        color: green;
+        color: #35786b;
       }
     }
   }
   .likes {
     height: 50px;
-    color: green;
+    color: #fecc7a;
     margin-left: 10px;
     padding-top: 15px;
     padding-bottom: 45px;
@@ -141,7 +141,7 @@ body #root {
     }
     .button {
       background-color: white;
-      border-color: green;
+      border-color: #fecc7a;
       &:hover {
         transform: scale(1.1);
       }
@@ -159,6 +159,14 @@ body #root {
   }
 }
 
+.messages > .tile.is-child.message {
+  margin: 10px;
+}
+
+.messageForm {
+  padding-bottom: 10px;
+}
+
 .tile.message {
-  background-color: #bf392d;
+  background-color: #d4433a;
 }

@@ -60,7 +60,7 @@ class ArticleShow extends React.Component {
       .post(`/api/articles/${this.props.match.params.id}/messages`,
         this.state.data,
         { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
-      .then(res => this.setState({newMessage: res.data, addingMessage: false}))
+      .then(res => this.setState({newMessage: res.data, data: {}}))
       .catch(err => this.setState({error: err.response.status}))
   }
 
@@ -79,15 +79,14 @@ class ArticleShow extends React.Component {
           </article>
           <ArticleLike liked={this.state.liked} likedBy={this.state.article.liked_by} handleLike={this.handleLike} error={this.state.error}/>
           <div className="tile is-parent is-vertical">
-            {!this.state.addingMessage && <button onClick={this.handleAddMessage} className="button is-primary">Leave a message</button>}
-            {this.state.addingMessage && <MessageForm
+            <MessageForm
               handleSubmit={this.handleMessageSubmit}
               handleChange={this.handleMessageChange}
               data={this.state.data}
-            />}
+            />
             {this.state.newMessage && <MessageShow message={this.state.newMessage}/>}
-            <MessagesIndex messages={messages} />
           </div>
+          <MessagesIndex messages={messages} />
         </div>
       </section>
     )

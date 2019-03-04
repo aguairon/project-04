@@ -27,10 +27,6 @@ class App extends React.Component {
     this.changeState = this.changeState.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
   }
-  componentDidMount() {
-    axios.get('/api/articles')
-      .then(res => this.setState({ articles: res.data, filtered_articles: res.data }))
-  }
 
   changeState(){
     this.setState({...this.state, show_modal: !this.state.show_modal })
@@ -41,7 +37,7 @@ class App extends React.Component {
   }
 
   render() {
-    if(!this.state.articles) return <h1>Loading...</h1>
+    if(!this.state) return <h1>Loading...</h1>
     return (
       <BrowserRouter>
         <main>
@@ -67,10 +63,7 @@ class App extends React.Component {
           <Switch>
             <SecureRoute path="/me" component={ProfileShow} />
             <SecureRoute path="/articles/:id" component={ArticleShow} />
-            <SecureRoute
-              path="/articles"
-              component={() =>
-                <ArticlesIndex />}
+            <SecureRoute path="/articles" component={ArticlesIndex}
             />
           </Switch>
         </main>

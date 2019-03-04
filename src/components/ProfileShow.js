@@ -20,11 +20,12 @@ class ProfileShow extends React.Component {
   render() {
     if(!this.state.data) return <h1>Loading...</h1>
     return(
-      <section className="section profile">
-        <div className="container">
+      <section className="section">
+        <div className="container profile">
           <h1 className="title is-1">{this.state.data.username}</h1>
           <h1 className="title is-2">{this.state.data.email}</h1>
         </div>
+        
       </section>
     )
   }

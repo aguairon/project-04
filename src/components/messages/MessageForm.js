@@ -2,16 +2,16 @@ import React from 'react'
 
 const MessageForm = ({ data, handleChange, handleSubmit}) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="messageForm" onSubmit={handleSubmit}>
       <div className="field">
         <div className="control">
-          <input
+          <textarea
             className="textarea"
-            placeholder="Textarea"
+            placeholder="Add a message here"
             name="content"
             onChange={handleChange}
-            value={data.content}
-          />
+            value={data.content || ''}>
+          </textarea>
         </div>
       </div>
       <button className="button is-primary">Save Message</button>
