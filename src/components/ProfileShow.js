@@ -29,6 +29,8 @@ class ProfileShow extends React.Component {
           <a className="button is-rounded is-danger is-selected">Articles you wrote</a>
           <a className="button is-rounded">Articles you liked</a>
         </div>
+        <div className="container profile">
+        </div>
       </section>
     )
   }
