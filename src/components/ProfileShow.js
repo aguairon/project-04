@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../lib/Auth'
+import ArticlePanel from './articles/ArticlePanel'
 
 class ProfileShow extends React.Component {
   constructor() {
@@ -29,7 +30,10 @@ class ProfileShow extends React.Component {
           <a className="button is-rounded is-danger is-selected">Articles you wrote</a>
           <a className="button is-rounded">Articles you liked</a>
         </div>
-        <div className="container profile">
+        <div className="tile is-ancestor is-vertical">
+          {this.state.data.created_articles.map(article => <div key={article.id} className="tile">
+            <ArticlePanel {...article}/>
+          </div>)}
         </div>
       </section>
     )
