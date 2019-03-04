@@ -13,7 +13,7 @@ class ProfileShow extends React.Component {
 
   componentDidMount() {
     axios
-      .get('api/me', { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
+      .get('/api/me', { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
       .then(res => this.setState({data: res.data}))
       .catch(err => console.log(err))
   }
