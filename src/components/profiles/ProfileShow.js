@@ -4,6 +4,7 @@ import Auth from '../../lib/Auth'
 import ProfileLikes from './ProfileLikes'
 import ProfileDetails from './ProfileDetails'
 import ProfileCreatedArticles from './ProfileCreatedArticles'
+import { Link } from 'react-router-dom'
 
 class ProfileShow extends React.Component {
   constructor() {
@@ -46,9 +47,10 @@ class ProfileShow extends React.Component {
     const  {articles, likes, details } = this.state
     const {created_articles: createdArticles, email, created_at: createdAt} = this.state.data
     return(
-      <section className="section">
-        <div className="container profile">
+      <section className="section profile">
+        <div className="container username">
           <h1 className="title is-1">{this.state.data.username}</h1>
+          <Link to="/articles/new" className="createArticle button">Create New Article</Link>
         </div>
         <div className="container profile_button">
           <a onClick={this.handleToggle} id="articles" className={articles ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>{this.props.match.path === '/me' ? 'Articles you wrote' : 'Articles user wrote'}</a>

@@ -174,14 +174,23 @@ body #root {
 .tile.message {
   background-color: #d4433a;
 }
-
-.profile_button {
-  text-align: center;
-  margin-top: 20px;
-  .button {
-    margin: 10px;
+.profile {
+  .container.username {
+    display: flex;
+    justify-content: space-between;
+    .createArticle {
+      margin-top: 10px;
+    }
+  }
+  .profile_button {
+    text-align: center;
+    margin-top: 20px;
+    .button {
+      margin: 10px;
+    }
   }
 }
+
 
 .empty {
   text-align: center;
