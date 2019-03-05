@@ -29,6 +29,10 @@ class ArticlesIndex extends React.Component {
     this.setState({...this.state, [name]: value})
   }
 
+  handleSubmit(e) {
+    e.preventDefault()
+  }
+
   render() {
     return (
       <section className="section">
