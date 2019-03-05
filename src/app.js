@@ -11,6 +11,7 @@ import ArticlesIndex from './components/articles/ArticlesIndex'
 import ArticleShow from './components/articles/ArticleShow'
 import Login from './components/auth/Login'
 import ProfileShow from './components/profiles/ProfileShow'
+import ProfilesIndex from './components/profiles/ProfilesIndex'
 import Register from './components/auth/Register'
 
 // const input = '# This is a header\n\nAnd this is a paragraph\n\nThis block of Markdown contains <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, and will require the <code>html-parser</code> AST plugin to be loaded, in addition to setting the <code class="prop">escapeHtml</code> property to false.'
@@ -62,6 +63,7 @@ class App extends React.Component {
           <Switch>
             <SecureRoute path="/me" component={ProfileShow} />
             <SecureRoute path="/users/:id" component={ProfileShow} />
+            <SecureRoute path="/users/" component={ProfilesIndex} />
             <SecureRoute path="/articles/:id" component={ArticleShow} />
             <SecureRoute path="/articles" component={ArticlesIndex}
             />

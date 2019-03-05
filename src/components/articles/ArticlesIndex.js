@@ -44,9 +44,11 @@ class ArticlesIndex extends React.Component {
             searchValue={this.searchValue}
           />
           <div className="tile is-ancestor is-vertical">
-            {this.filterArticles().map(article => <div key={article.id} className="tile">
-              <ArticlePanel {...article}/>
-            </div>)}
+            {this.filterArticles().map(article =>
+              <div key={article.id} className="tile">
+                <ArticlePanel {...article}/>
+              </div>
+            )}
           </div>
         </div>
       </section>
