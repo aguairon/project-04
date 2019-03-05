@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, g
 from lib.secure_route import secure_route
 from models.article import Article, ArticleSchema
-from models.message import Message, MessageSchema
+from models.message import MessageSchema
 
 api = Blueprint('articles', __name__)
 
@@ -18,7 +18,7 @@ def index():
 
 @api.route('/articles/desc', methods=['GET'])
 def desc():
-    articles = Article.query.order_by(Article.updated_at.desc()).limit(5).all()
+    articles = Article.query.order_by(Article.updated_at.desc()).limit(1).all()
     return articles_schema.jsonify(articles)
 
 @api.route('/articles/<int:article_id>', methods=['GET'])

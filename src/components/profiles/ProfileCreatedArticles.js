@@ -18,7 +18,7 @@ const ProfileCreatedArticles = ({createdArticles}) => {
     return (
       <section className="section">
         <div className="container">
-          <p>No articles have been written</p>
+          <p className="empty">No articles have been written</p>
         </div>
       </section>
     )

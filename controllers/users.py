@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request, g
 from models.user import User, UserSchema
 from lib.secure_route import secure_route
+from sqlalchemy import func
 
 api = Blueprint('users', __name__)
 
@@ -11,6 +12,11 @@ user_schema = UserSchema()
 def index():
     users = User.query.all()
     return users_schema.jsonify(users)
+
+# @api.route('/users/created', methods=['GET'])
+# def created():
+#     users = User.query(func.count(User.created_articles)).group_by(User.username)
+#     return users_schema.jsonify(users)
 
 @api.route('/users/<int:user_id>', methods=['GET'])
 def show(user_id):

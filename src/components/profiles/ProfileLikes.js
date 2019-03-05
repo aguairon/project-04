@@ -21,7 +21,7 @@ const ProfileLikes = ({liked}) => {
     return (
       <section className="section">
         <div className="container">
-          <p>No articles have been liked</p>
+          <p className="empty">No articles have been liked</p>
         </div>
       </section>
     )
