@@ -53,7 +53,7 @@ class Navbar extends React.Component {
           <div className={`navbar-menu ${this.state.navbarOpen ? 'is-active' : ''}`}>
             <div className="navbar-start">
               <Link className="navbar-item" to="/articles">Discover the creatures</Link>
-              <Link className="navbar-item" to="/articles">Discover the creatures</Link>
+              <Link className="navbar-item" to="/users">Discover other users</Link>
             </div>
             <div className="navbar-end">
               <Link className="navbar-item" to="/me">{this.state.user ? 'Hello ' + this.state.user.username : ''}</Link>

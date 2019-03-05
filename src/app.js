@@ -61,6 +61,7 @@ class App extends React.Component {
 
           <Switch>
             <SecureRoute path="/me" component={ProfileShow} />
+            <SecureRoute path="/users/:id" component={ProfileShow} />
             <SecureRoute path="/articles/:id" component={ArticleShow} />
             <SecureRoute path="/articles" component={ArticlesIndex}
             />

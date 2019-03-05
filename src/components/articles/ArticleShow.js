@@ -1,10 +1,12 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import { Link } from 'react-router-dom'
 import MessagesIndex from '../../components/messages/MessagesIndex'
 import MessageForm from '../../components/messages/MessageForm'
 import ArticleLike from '../articles/ArticleLike'
 import MessageShow from '../messages/MessageShow'
+
 
 class ArticleShow extends React.Component {
   constructor() {
@@ -66,7 +68,7 @@ class ArticleShow extends React.Component {
 
   render() {
     if(!this.state.article) return null
-    const  {title, content, messages, creator, created_at} = this.state.article
+    const  {title, content, messages, creator, created_at: createdAt} = this.state.article
     return(
       <section className="section">
         <div className="container">
@@ -74,8 +76,8 @@ class ArticleShow extends React.Component {
           <article className="tile article is-child notification is-danger">
             <div className="content">
               {content}
-              <p className='createdBy'> Written by {creator.username} on {created_at}</p>
             </div>
+            <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
           </article>
           <ArticleLike liked={this.state.liked} likedBy={this.state.article.liked_by} handleLike={this.handleLike} error={this.state.error}/>
           <div className="tile is-parent is-vertical">

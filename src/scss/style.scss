@@ -152,10 +152,9 @@ body #root {
 .tile.article {
   background-color: #ff5146;
   font-size: 18px;
-  .createdBy {
-    margin: 20px;
-    text-align: center;
-    font-size: 14px;
+  a.createdBy {
+    text-decoration: none;
+    font-size: 16px;
   }
 }
 

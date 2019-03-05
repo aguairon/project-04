@@ -8,16 +8,25 @@ class ProfileShow extends React.Component {
     super()
     this.state = {
       articles: true,
-      likes: false
+      likes: false,
+      details: false
     }
     this.handleToggle = this.handleToggle.bind(this)
   }
 
   componentDidMount() {
-    axios
-      .get('/api/me', { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
-      .then(res => this.setState({data: res.data}))
-      .catch(err => console.log(err))
+    if (this.props.match.path === '/me') {
+      axios
+        .get('/api/me', { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
+        .then(res => this.setState({data: res.data}))
+        .catch(err => console.log(err))
+    } else {
+      axios
+        .get(`/api/users/${this.props.match.params.id}`, { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
+        .then(res => this.setState({data: res.data}))
+        .catch(err => console.log(err))
+
+    }
   }
 
   handleToggle(e) {
@@ -33,22 +42,22 @@ class ProfileShow extends React.Component {
   render() {
     if(!this.state.data) return <h1>Loading...</h1>
     const  {articles, likes, details } = this.state
-    const {created_articles, email, created_at} = this.state.data
+    const {created_articles: createdArticles, email, created_at: createdAt} = this.state.data
     return(
       <section className="section">
         <div className="container profile">
           <h1 className="title is-1">{this.state.data.username}</h1>
         </div>
         <div className="container profile_button">
-          <a onClick={this.handleToggle} id="articles" className={articles ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>Articles you wrote</a>
-          <a onClick={this.handleToggle} id="likes" className={likes ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>Articles you liked</a>
-          <a onClick={this.handleToggle} id="details" className={details ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>Your details</a>
+          <a onClick={this.handleToggle} id="articles" className={articles ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>{this.props.match.path === '/me' ? 'Articles you wrote' : 'Articles user wrote'}</a>
+          <a onClick={this.handleToggle} id="likes" className={likes ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>{this.props.match.path === '/me' ? 'Articles you liked' : 'Articles user liked'}</a>
+          <a onClick={this.handleToggle} id="details" className={details ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>{this.props.match.path === '/me' ? 'Your details' : 'User details'}</a>
         </div>
         {this.state.articles &&
           <section className="section">
             <div className="container">
               <div className="tile is-ancestor is-vertical">
-                {created_articles.map(article => <div key={article.id} className="tile">
+                {createdArticles.map(article => <div key={article.id} className="tile">
                   <ArticlePanel {...article}/>
                 </div>)}
               </div>
@@ -69,7 +78,7 @@ class ProfileShow extends React.Component {
         {this.state.details &&
           <div>
             <h1 className="title is-2">{email}</h1>
-            <p>`Created at {created_at}`</p>
+            <p>`Created at {createdAt}`</p>
           </div>
         }
       </section>
