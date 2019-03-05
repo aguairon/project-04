@@ -29,7 +29,7 @@ class ArticleNew extends React.Component {
       .post('/api/articles',
         this.state.data,
         { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
-      .then(res => console.log(res))
+      .then(res => this.props.history.push(`/articles/${res.data.id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
