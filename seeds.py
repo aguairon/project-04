@@ -81,7 +81,21 @@ with app.app_context():
     )
     beithir.save()
 
+    xana = Article(
+        title='Xana',
+        #pylint: disable=C0301
+        content="The xana is a character found in Asturian mythology. Always female, she is a creature of extraordinary beauty believed to live in fountains, rivers, waterfalls or forested regions with pure water. She is usually described as small or slender with long blonde or light brown hair (most often curly), which she tends to with gold or silver combs woven from sun or moonbeams. The origin of the Asturian word xana is unclear, though some scholars see it as a derivation from the Latin name for the goddess Diana. References to where the mythological xanas lived are still common in Asturian toponyms. They also appear in Eastern Galician and Cantabrian",
+        creator=greg
+    )
+    xana.save()
 
+    apkallu = Article(
+        title='Apkallu',
+        #pylint: disable=C0301
+        content="Apkallu (Akkadian) and Abgal (Sumerian) are terms found in cuneiform inscriptions that in general mean either 'wise' or 'sage.'In several contexts the Apkallu are seven demi-gods, sometimes described as part man and part fish, associated with human wisdom; these creatures are often referred to in scholarly literature as the Seven Sages. Sometimes the sages are associated with a specific primeval king. After the deluge (see Epic of Gilgamesh), further sages and kings are listed. Post-deluge, the sages are considered human, and in some texts are distinguished by being referred to as Ummanu, not Apkallu.The terms Apkallu (as well as Abgal) is also used as an epithet for kings and gods as a mark of wisdom or knowledge.A further use of the term Apkallu is when referring to figurines used in apotropaic rituals; these figurines include fish-man hybrids representing the seven sages, but also include bird-headed and other figures. In a later work by Berossus describing Babylonia, the Apkallu appear again, also described as fish-men who are sent by the gods to impart knowledge to people. In Berossus, the first one Oannes (a variant of Uanna) is said to have taught people the creation myth the Enuma Elis",
+        creator=begona
+    )
+    apkallu.save()
 
     message1 = Message(
         content="This is a very nice article, Thanks for posting",

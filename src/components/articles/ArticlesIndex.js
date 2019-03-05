@@ -9,33 +9,24 @@ class ArticlesIndex extends React.Component {
     this.state = {
       search: '',
       articles: [],
-      filtered_articles: [],
       error: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
   componentDidMount() {
     axios.get('/api/articles')
-      .then(res => this.setState({ articles: res.data, filtered_articles: res.data }))
+      .then(res => this.setState({ articles: res.data }))
   }
 
   filterArticles() {
-    let filtered = this.state.articles
-    filtered = filtered.filter(article => {
-      return article.title.toLowerCase().search(this.state.search) !== -1
+    return this.state.articles.filter(article => {
+      return article.title.toLowerCase().search(this.state.search) !== -1 || this.state.search === ''
     })
-    this.setState({filtered_articles: filtered})
   }
 
   handleChange({target: {name, value}}){
     this.setState({...this.state, [name]: value})
-    this.filterArticles()
-  }
-  handleSubmit(e){
-    e.preventDefault(e)
-    this.filterArticles()
   }
 
   render() {
@@ -46,9 +37,10 @@ class ArticlesIndex extends React.Component {
           <ArticleSearchBar
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
-            searchValue={this.searchValue}/>
+            searchValue={this.searchValue}
+          />
           <div className="tile is-ancestor is-vertical">
-            {this.state.filtered_articles.map(article => <div key={article.id} className="tile">
+            {this.filterArticles().map(article => <div key={article.id} className="tile">
               <ArticlePanel {...article}/>
             </div>)}
           </div>

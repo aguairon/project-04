@@ -122,9 +122,9 @@ body #root {
   .likes.liked_by_user {
     .button {
       background-color: white;
-      border-color: #35786b;
+      border-color: #00d1b2;
       .icon {
-        color: #35786b;
+        color: #00d1b2;
       }
     }
   }
@@ -169,4 +169,12 @@ body #root {
 
 .tile.message {
   background-color: #d4433a;
+}
+
+.profile_button {
+  text-align: center;
+  margin-top: 20px;
+  .button {
+    margin: 10px;
+  }
 }

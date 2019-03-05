@@ -13,6 +13,7 @@ const ArticleSearchBar = ({ searchValue, handleChange, handleSubmit }) => {
               value={searchValue}
               onChange={handleChange}
               name='search'
+              autoComplete='off'
             />
             <span className="icon is-small is-left" >
               <i className="fas fa-search" aria-hidden="true"></i>
