@@ -2,7 +2,7 @@ import React from 'react'
 import ArticlePanel from '../articles/ArticlePanel'
 
 const ProfileCreatedArticles = ({createdArticles}) => {
-  if (createdArticles > 0) {
+  if (createdArticles.length >= 1) {
     return (
       <section className="section">
         <div className="container">
