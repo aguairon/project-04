@@ -21,7 +21,7 @@ class ArticlesIndex extends React.Component {
 
   filterArticles() {
     return this.state.articles.filter(article => {
-      return article.title.toLowerCase().search(this.state.search) !== -1 || this.state.search === ''
+      return article.title.toLowerCase().search(this.state.search.toLowerCase()) !== -1 || this.state.search === ''
     })
   }
 
