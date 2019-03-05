@@ -79,7 +79,7 @@ class ArticleShow extends React.Component {
             </div>
             <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
           </article>
-          <ArticleLike liked={this.state.liked} likedBy={this.state.article.liked_by} handleLike={this.handleLike} error={this.state.error}/>
+          <ArticleLike likedBy={this.state.article.liked_by} handleLike={this.handleLike} error={this.state.error}/>
           <div className="tile is-parent is-vertical">
             <MessageForm
               handleSubmit={this.handleMessageSubmit}

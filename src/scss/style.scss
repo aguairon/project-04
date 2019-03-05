@@ -150,6 +150,10 @@ body #root {
   }
 }
 
+.tile {
+  flex-wrap: wrap;
+}
+
 .tile.article {
   background-color: #ff5146;
   font-size: 18px;

@@ -8,7 +8,7 @@ const ProfilePanel = ({ id, username, email, created_articles: created }) => {
         <article className="tile article is-child notification is-danger">
           <p className="title">{username}</p>
           <p>{email}</p>
-          <p>Wrote {created.length} articles</p>
+          <p>Wrote {created.length} {created.length === 1? 'article' : 'articles'}</p>
         </article>
       </Link>
     </div>

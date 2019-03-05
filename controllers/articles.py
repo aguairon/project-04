@@ -12,7 +12,13 @@ message_schema = MessageSchema()
 
 @api.route('/articles', methods=['GET'])
 def index():
-    articles = Article.query.all()
+    articles = Article.query.order_by(Article.title).all()
+    return articles_schema.jsonify(articles)
+
+
+@api.route('/articles/desc', methods=['GET'])
+def desc():
+    articles = Article.query.order_by(Article.updated_at.desc()).limit(5).all()
     return articles_schema.jsonify(articles)
 
 @api.route('/articles/<int:article_id>', methods=['GET'])

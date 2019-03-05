@@ -10,6 +10,16 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
+    carmen, errors = user_schema.load({
+        'username':'carmen',
+        'email':'carmen@gmail.com',
+        'password':'passpass',
+        'password_confirmation':'passpass'
+        })
+    if errors:
+        raise Exception(errors)
+    carmen.save()
+
     greg, errors = user_schema.load({
         'username':'greg',
         'email':'bdizzle@gmail.com',
@@ -19,6 +29,36 @@ with app.app_context():
     if errors:
         raise Exception(errors)
     greg.save()
+
+    tom, errors = user_schema.load({
+        'username':'tom',
+        'email':'tom@gmail.com',
+        'password':'passpass',
+        'password_confirmation':'passpass'
+        })
+    if errors:
+        raise Exception(errors)
+    tom.save()
+
+    maria, errors = user_schema.load({
+        'username':'maria',
+        'email':'maria@gmail.com',
+        'password':'passpass',
+        'password_confirmation':'passpass'
+        })
+    if errors:
+        raise Exception(errors)
+    maria.save()
+
+    roan, errors = user_schema.load({
+        'username':'roan',
+        'email':'roan@gmail.com',
+        'password':'passpass',
+        'password_confirmation':'passpass'
+        })
+    if errors:
+        raise Exception(errors)
+    roan.save()
 
     begona, errors = user_schema.load({
         'username':'begona',
@@ -30,6 +70,13 @@ with app.app_context():
         raise Exception(errors)
     begona.save()
 
+    llorona = Article(
+        title="La Llorona",
+        #pylint: disable=C0301
+        content="The legend is said that in a rural village there lived a young woman named Maria. Maria came from a poor family but was known around her village for her beauty. One day, an extremely wealthy nobleman traveled through her village. He stopped in his tracks when he saw Maria. Maria was charmed by him and he was charmed by her beauty, so when he proposed to her, she immediately accepted. Maria's family was thrilled that she was marrying into a wealthy family, but the nobleman's father was extremely disappointed that his son was marrying into poverty. Maria and her new husband built a house in the village to be away from his disapproving father. Eventually, she gave birth to two boys. Her husband was always traveling, and stopped spending time with his family. When he came home, he only paid attention to the sons and Maria knew her husband was falling out of love with her. One day, he returned to the village with a younger woman, and told his sons farewell, ignoring Maria.Maria, angry and hurt, took her sons to a river and drowned them in a blind rage. She realized what she had done and searched for them, but the river had already carried them away. Days later, she was found dead on the river bank. Challenged at the gates of heaven for the whereabouts of her sons, she was not permitted to enter the afterlife until she finds them. Stuck between the land of the living and the dead, she spends eternity looking for her lost sons. She is always heard weeping for her sons, earning her the name 'La Llorona.' It is said that if you hear her crying, you are to run the opposite way. If you hear her cries, they could bring misfortune or even death. Many parents in Latin America use this story to scare their children from staying out too late.La Llorona kidnaps wandering children at night, mistaking them for her own. She begs the heavens for forgiveness, and drowns the children she kidnaps.[2] People who claim to have seen her say she appears at night or in the late evening by rivers or lakes, wearing a white or black gown with a veil.[3] Some believe those who hear the wails of La Llorona are marked for death or misfortune, similar to the Gaelic banshee legend.[4] Among her wails, she is noted as crying '¡Ay, mis hijos!'' which translates to 'Oh, my children!' She scrapes the bottom of the rivers and lakes, searching for her sons. It is said that when her wails sounds near she is actually far and when she sounds distant, she is actually very near.",
+        creator=maria
+    )
+    llorona.save()
 
     aeternae = Article(
         title='Aeternae',
@@ -44,7 +91,8 @@ with app.app_context():
         title='Athos',
         #pylint: disable=C0301
         content="Athos ([ˈæθɒs] Greek: Ἄθως, pronounced [ˈatʰɔːs]) from Greek mythology, was one of the Gigantes. He is most known for the creation of Mt. Athos, a mountain and peninsula in northern Greece, known as The Holy Mountain, that is located in northern Greece. There are two versions regarding the creation of the mountain, and they both involve Poseidon, Greek God of the sea, son of Kronos and brother to Zeus and Hades. In one version of the story, Athos throws a mountain at Poseidon but misses. It is said that Athos got away and the rock he was about to throw at the god slipped through his fingers. Poseidon then threw it back at him, thus creating Mt. Athos. In the other version Poseidon throws the mountain at Athos, creating the mountain.",
-        creator=begona
+        creator=begona,
+        liked_by=[roan, tom]
     )
     athos.save()
 
@@ -52,7 +100,8 @@ with app.app_context():
         title='Ba Jiao Gui',
         #pylint: disable=C0301
         content="Chinese folklore features a rich variety of ghosts, monsters, and other supernatural creatures. According to traditional beliefs a ghost is the spirit form of a person who has died. Ghosts are typically malevolent and will cause harm to the living if provoked. Many Chinese folk beliefs about ghosts have been adopted into the mythologies and folklore of neighboring East Asian cultures, notably Japan, Korea, and Vietnam. Beliefs about ghosts are closely associated with Chinese ancestor worship, where much have been incorporated into Buddhism and in turn influenced and created uniquely Chinese Buddhist beliefs about the supernatural.Traditionally, the Chinese believed that it was possible to contact the spirits of deceased relatives and ancestors through a medium. It was believed that the spirits of the deceased can help them if they were properly respected and rewarded. The annual Hungry Ghost Festival, celebrated in Greater China (including Hong Kong and Macao Special Administrative Regions and Taiwan), Malaysia, Singapore, and elsewhere in the Chinese diaspora, is dedicated to performing rituals to honor and remember the spirits of the dead. On this day ghosts and other supernatural creatures come out from the Underworld and move among the living. Families prepare food and other offerings and place them on a shrine dedicated to deceased relatives. Incense and paper money are burned and other rituals are performed in hopes that the spirits of the dead will protect and bring good luck to the family.Ghosts are described in classical Chinese texts, and continue to be depicted in modern literature and movies.",
-        creator=greg
+        creator=greg,
+        liked_by=[maria]
     )
     ba.save()
 
@@ -96,6 +145,32 @@ with app.app_context():
         creator=begona
     )
     apkallu.save()
+
+    xingtian = Article(
+        title='Xingtian',
+        #pylint: disable=C0301
+        content="Chinese: 刑天; pinyin: Xíngtiān; 'Opposing Heaven', is a Chinese deity who fights against the Supreme Divinity, not giving up even after the event of his decapitation. Losing the fight for supremacy, he was beheaded and his head buried in Changyang Mountain. Nevertheless, headless, with a shield in one hand and a battle axe in the other, he continues the fight, using his nipples as eyes and his bellybutton as a mouth. Xingtian was an official under Yandi.[2] Yandi fought against Huangdi for the position of supreme god, but he lost the conflict. Xingtian still continued the fight after Yandi's defeat, but was defeated and decapitated by Huangdi. Eventually, he regenerated himself and continued his defiance, which was expressed by a martial dance.",
+        creator=roan,
+        liked_by=[greg, maria, tom]
+    )
+    xingtian.save()
+
+    xindhi = Article(
+        title="Xindhi",
+        #pylint: disable=C0301
+        content="Xindhi, in Albanian folklore, are either elf-like creatures or are actually elves; 'xindhi' are male, while the 'xindha' are female.A creaking door or a flickering flame serve as the signals for their approach. Sometimes the xindhi are friendly and helpful; generally, though, they are cruel to people. A Xindhi is a male spirit, while a Xindha is a female spirit.",
+        creator=tom
+    )
+    xindhi.save()
+
+    mojana = Article(
+        title="La Mojana",
+        #pylint: disable=C0301
+        content="The Mohana (La Mojana) Mother of water or Mami Wata is a shapeshifting water spirit who usually appear in human form to seduce and take away the humans. In the Amazon basin this features are applied to the Pink dolphins representing the spirit of Amazon river. The discography of Colombian folkloric singer Totó la Momposina includes works about the Mohana.",
+        creator=maria
+    )
+    mojana.save()
+
 
     message1 = Message(
         content="This is a very nice article, Thanks for posting",
