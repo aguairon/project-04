@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../lib/Auth'
-import ArticlePanel from './articles/ArticlePanel'
+import Auth from '../../lib/Auth'
+import ProfileLikes from './ProfileLikes'
+import ProfileDetails from './ProfileDetails'
+import ProfileCreatedArticles from './ProfileCreatedArticles'
 
 class ProfileShow extends React.Component {
   constructor() {
@@ -54,32 +56,13 @@ class ProfileShow extends React.Component {
           <a onClick={this.handleToggle} id="details" className={details ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>{this.props.match.path === '/me' ? 'Your details' : 'User details'}</a>
         </div>
         {this.state.articles &&
-          <section className="section">
-            <div className="container">
-              <div className="tile is-ancestor is-vertical">
-                {createdArticles.map(article => <div key={article.id} className="tile">
-                  <ArticlePanel {...article}/>
-                </div>)}
-              </div>
-            </div>
-          </section>
+          <ProfileCreatedArticles createdArticles={createdArticles}/>
         }
         {this.state.likes &&
-          <section className="section">
-            <div className="container">
-              <div className="tile is-ancestor is-vertical">
-                {this.state.data.likes.map(like =><div key={like.id} className="tile">
-                  <ArticlePanel {...like}/>
-                </div>)}
-              </div>
-            </div>
-          </section>
+          <ProfileLikes liked={this.state.data.likes}/>
         }
         {this.state.details &&
-          <div>
-            <h1 className="title is-2">{email}</h1>
-            <p>`Created at {createdAt}`</p>
-          </div>
+          <ProfileDetails email={email} createdAt={createdAt}/>
         }
       </section>
     )
