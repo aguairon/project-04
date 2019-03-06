@@ -30,7 +30,7 @@ class ArticleNew extends React.Component {
         this.state.data,
         { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
       .then(res => this.props.history.push(`/articles/${res.data.id}`))
-      .catch(err => this.setState({ errors: err.response.data.errors }))
+      .catch(err => this.setState({ error: err.response.data.message }))
   }
 
   render() {
@@ -62,6 +62,7 @@ class ArticleNew extends React.Component {
               </div>
             </div>
 
+            {this.state.error && <small className="help is-danger">{this.state.error}</small>}
             <button className="button is-primary">Submit</button>
           </form>
         </div>

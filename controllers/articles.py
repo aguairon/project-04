@@ -45,13 +45,18 @@ def show(article_id):
 @api.route('/articles', methods=['POST'])
 @secure_route
 def create():
-    article, errors = article_schema.load(request.get_json())
-    article.creator = g.current_user
+    try:
+        article, errors = article_schema.load(request.get_json())
+        article.creator = g.current_user
 
-    if errors:
-        return jsonify(errors), 422
+        if errors:
+            return jsonify(errors), 422
 
-    article.save()
+        article.save()
+    except ValueError as e:
+        return jsonify({
+            'message': "title/content is too short"
+        }), 422
 
     return article_schema.jsonify(article)
 

@@ -1,4 +1,7 @@
 from app import db, ma
+from sqlalchemy.schema import CheckConstraint
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import validates
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
 
@@ -20,6 +23,23 @@ class Article(db.Model, BaseModel):
         secondary=likes,
         backref='likes'
     )
+
+    __table_args__ = (
+        CheckConstraint('char_length(title) > 3', name='title-min-length'),
+        CheckConstraint('char_length(content) > 10', name='content-min-length'),
+    )
+
+    @validates('title')
+    def validate_title(self, key, title) -> str:
+        if len(title) <= 3:
+            raise ValueError('title is too short')
+        return title
+
+    @validates('content')
+    def validate_content(self, key, content) -> str:
+        if len(content) <= 10:
+            raise ValueError('article content is too short')
+        return content
 
 
 class ArticleSchema(ma.ModelSchema, BaseSchema):
