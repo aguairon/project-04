@@ -77,18 +77,24 @@ $body-background-color: #0f1b31;
   top: 150px;
   left: 30%;
   right: 30%;
-  bottom: 150px;
+  bottom: 140px;
   background-color: white;
   border-radius: 5px;
   overflow: hidden;
+  .section {
+    padding: 15px;
+  }
   .container {
-    max-width: 400px;
+    max-width: 300px;
   }
   .is-4 {
     color: #179aaa;
+    text-align: center;
   }
   .button.is-info {
     background-color: #179aaa;
+    width: 100%;
+    margin-bottom: 20px;
   }
   .input {
     border-color: #179aaa;
@@ -100,6 +106,16 @@ $body-background-color: #0f1b31;
   }
 }
 
+.logo {
+  width: 30px;
+  height: 30px;
+  background: url("https://static.thenounproject.com/png/120147-200.png");
+  background-repeat: no-repeat;
+  background-position: cover;
+  background-size: contain;
+  margin: 10px auto;
+}
+
 
 body #root {
   font-family: 'Laila', serif;
@@ -109,7 +125,6 @@ body #root {
       width: 50px;
       height: 30px;
       background: url("https://static.thenounproject.com/png/120147-200.png");
-      // background: url("../components/assets/120147-200.png");
       background-repeat: no-repeat;
       background-position: cover;
       background-size: contain;
@@ -154,7 +169,7 @@ body #root {
   flex-wrap: wrap;
 }
 
-.tile.article {
+.tile.article,  {
   background-color: #ff5146;
   font-size: 18px;
   a.createdBy {

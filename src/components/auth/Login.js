@@ -35,8 +35,9 @@ class Login extends React.Component {
     return (
       <main className="section">
         <div className="container">
+          <div className="logo"></div>
           <form onSubmit={this.handleSubmit}>
-            <h2 className="title is-4">Login</h2>
+            <h2 className="title is-4">Log in</h2>
             <div className="field">
               <div className="control">
                 <input

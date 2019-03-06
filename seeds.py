@@ -165,7 +165,7 @@ with app.app_context():
     xingtian = Article(
         title='Xingtian',
         #pylint: disable=C0301
-        content="Chinese: 刑天; pinyin: Xíngtiān; 'Opposing Heaven', is a Chinese deity who fights against the Supreme Divinity, not giving up even after the event of his decapitation. Losing the fight for supremacy, he was beheaded and his head buried in Changyang Mountain. Nevertheless, headless, with a shield in one hand and a battle axe in the other, he continues the fight, using his nipples as eyes and his bellybutton as a mouth. Xingtian was an official under Yandi.[2] Yandi fought against Huangdi for the position of supreme god, but he lost the conflict. Xingtian still continued the fight after Yandi's defeat, but was defeated and decapitated by Huangdi. Eventually, he regenerated himself and continued his defiance, which was expressed by a martial dance.",
+        content="Chinese: 刑天; pinyin: Xíngtiān; 'Opposing Heaven', is a Chinese deity who fights against the Supreme Divinity, not giving up even after the event of his decapitation. Losing the fight for supremacy, he was beheaded and his head buried in Changyang Mountain. Nevertheless, headless, with a shield in one hand and a battle axe in the other, he continues the fight, using his nipples as eyes and his bellybutton as a mouth. Xingtian was an official under Yandi.Yandi fought against Huangdi for the position of supreme god, but he lost the conflict. Xingtian still continued the fight after Yandi's defeat, but was defeated and decapitated by Huangdi. Eventually, he regenerated himself and continued his defiance, which was expressed by a martial dance.",
         creator=roan,
         liked_by=[greg, maria, tom]
     )

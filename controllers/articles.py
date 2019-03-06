@@ -1,3 +1,4 @@
+from functools import reduce
 from flask import Blueprint, request, jsonify, g
 from lib.secure_route import secure_route
 from models.article import Article, ArticleSchema
@@ -15,11 +16,25 @@ def index():
     articles = Article.query.order_by(Article.title).all()
     return articles_schema.jsonify(articles)
 
-
 @api.route('/articles/desc', methods=['GET'])
 def desc():
     articles = Article.query.order_by(Article.updated_at.desc()).limit(1).all()
     return articles_schema.jsonify(articles)
+
+@api.route('/articles/liked', methods=['GET'])
+def mostliked():
+
+    def find_most_liked(current, found):
+        if len(current.liked_by) > len(found.liked_by):
+            return current
+
+        return found
+
+
+    articles = Article.query.all()
+    most_prolific = reduce(find_most_liked, articles)
+
+    return article_schema.jsonify(most_prolific)
 
 @api.route('/articles/<int:article_id>', methods=['GET'])
 def show(article_id):
