@@ -45,9 +45,7 @@ class ArticlesIndex extends React.Component {
           />
           <div className="tile is-ancestor is-vertical">
             {this.filterArticles().map(article =>
-              <div key={article.id} className="tile">
-                <ArticlePanel {...article}/>
-              </div>
+              <ArticlePanel  key={article.id} {...article}/>
             )}
           </div>
         </div>
