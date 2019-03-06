@@ -1,26 +1,15 @@
 import React from 'react'
-import ArticlePanel from '../articles/ArticlePanel'
+import EmptyProfileSection from './EmptyProfileSection'
+import PopulatedProfileSection from './PopulatedProfileSection'
 
 const ProfileCreatedArticles = ({createdArticles}) => {
   if (createdArticles.length >= 1) {
     return (
-      <section className="section">
-        <div className="container">
-          <div className="tile is-ancestor is-vertical">
-            {createdArticles.map(article => <div key={article.id} className="tile">
-              <ArticlePanel {...article}/>
-            </div>)}
-          </div>
-        </div>
-      </section>
+      <PopulatedProfileSection items={createdArticles} />
     )
   } else {
     return (
-      <section className="section">
-        <div className="container">
-          <p className="empty">No articles have been written</p>
-        </div>
-      </section>
+      <EmptyProfileSection message={'No articles have been written'}/>
     )
   }
 

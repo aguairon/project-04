@@ -1,29 +1,15 @@
 import React from 'react'
-import ArticlePanel from '../articles/ArticlePanel'
-
+import EmptyProfileSection from './EmptyProfileSection'
+import PopulatedProfileSection from './PopulatedProfileSection'
 
 const ProfileLikes = ({liked}) => {
   if (liked.length > 0 ) {
     return (
-      <div>
-        <section className="section">
-          <div className="container">
-            <div className="tile is-ancestor is-vertical">
-              {liked.map(like =><div key={like.id} className="tile">
-                <ArticlePanel {...like}/>
-              </div>)}
-            </div>
-          </div>
-        </section>
-      </div>
+      <PopulatedProfileSection items={liked} />
     )
   } else {
     return (
-      <section className="section">
-        <div className="container">
-          <p className="empty">No articles have been liked</p>
-        </div>
-      </section>
+      <EmptyProfileSection message={'No articles have been liked'}/>
     )
   }
 }
