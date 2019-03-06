@@ -17,7 +17,7 @@ class ProfileShow extends React.Component {
     this.handleToggle = this.handleToggle.bind(this)
   }
 
-  componentDidMount() {
+  getUserData() {
     if (this.props.match.path === '/me') {
       axios
         .get('/api/me', { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
@@ -29,6 +29,16 @@ class ProfileShow extends React.Component {
         .then(res => this.setState({data: res.data}))
         .catch(err => console.log(err))
 
+    }
+  }
+
+  componentDidMount() {
+    this.getUserData()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.getUserData()
     }
   }
 

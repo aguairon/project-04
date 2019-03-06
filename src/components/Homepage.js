@@ -12,8 +12,13 @@ class Homepage extends React.Component {
 
   componentDidMount() {
     axios
-      .get('api/articles/desc')
+      .get('/api/articles/desc')
       .then(res => this.setState({articles: res.data}))
+      .catch(err => console.log(err.message))
+
+    axios
+      .get('/api/users/most')
+      .then(res => this.setState({user: res.data}))
       .catch(err => console.log(err.message))
   }
 

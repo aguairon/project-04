@@ -78,6 +78,22 @@ with app.app_context():
     )
     llorona.save()
 
+    mandragora = Article(
+        title="Mandragora",
+        #pylint: disable=C0301
+        content="In myth, mandragoras are familiar demons who appear in the figures of little men without beards.Mandragoras are thought to be little dolls or figures given to sorcerers by the Devil for the purpose of being consulted by them in time of need; and it would seem as if this conception had sprung directly from that of the fetish, which is nothing else than a dwelling-place made by a shaman or medicine-man for the reception of any wandering spirit who chooses to take up his abode therein.",
+        creator=roan
+    )
+    mandragora.save()
+
+    gog = Article(
+        title="Gog and Magog",
+        #pylint: disable=C0301
+        content="Gog and Magog (/ˈɡɒɡ ... ˈmeɪɡɒɡ/; Hebrew: גּוֹג וּמָגוֹג Gog u-Magog) appear in the Hebrew Bible as individuals, peoples, or lands. In Ezekiel 38, Gog is an individual and Magog is his land; in Genesis 10 Magog is a man, but no Gog is mentioned; and centuries later Jewish tradition changed Ezekiel's Gog from Magog into Gog and Magog, which is the form in which they appear in the Book of Revelation, although there they are peoples rather than individuals.A legend was attached to Gog and Magog by the time of the Roman period, that the Gates of Alexander were erected by Alexander the Great to repel the tribe. Romanized Jewish historian Josephus knew them as the nation descended from Magog the Japhetite, as in Genesis, and explained them to be the Scythians. In the hands of Early Christian writers they became apocalyptic hordes, and throughout the Medieval period variously identified as the Huns, Khazars, Mongols, Turanians or other nomads, or even the Ten Lost Tribes of Israel.The legend of Gog and Magog and the gates was also interpolated into the Alexander romances. In one version, 'Goth and Magoth' are kings of the Unclean Nations, driven beyond a mountain pass by Alexander, and blocked from returning by his new wall. Gog and Magog are said to engage in human cannibalism in the romances and derived literature. They have also been depicted on Medieval cosmological maps, or mappae mundi, sometimes alongside Alexander's wall.The conflation of Gog and Magog with the legend of Alexander and the Iron Gates was disseminated throughout the Near East in the early centuries of the Christian era.They appear in the Quran as Yajuj and Majuj (Arabic: يأجوج ومأجوج‎ Yaʾjūj wa-Maʾjūj), adversaries of Dhul-Qarnayn, who is mentioned in the Qu'ran as a great righteous ruler and is most commonly considered to be Alexander the Great. Muslim geographers identified them at first with Turkic tribes from Central Asia and later with the Mongols. In modern times they remain associated with apocalyptic thinking, especially in the United States and the Muslim world.",
+        creator=roan,
+        liked_by=[begona, tom]
+    )
+
     aeternae = Article(
         title='Aeternae',
         #pylint: disable=C0301
