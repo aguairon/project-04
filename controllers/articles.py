@@ -16,12 +16,12 @@ def index():
     articles = Article.query.order_by(Article.title).all()
     return articles_schema.jsonify(articles)
 
-@api.route('/articles/desc', methods=['GET'])
+@api.route('/articles/latest', methods=['GET'])
 def desc():
     articles = Article.query.order_by(Article.updated_at.desc()).limit(1).all()
     return articles_schema.jsonify(articles)
 
-@api.route('/articles/liked', methods=['GET'])
+@api.route('/articles/most-liked', methods=['GET'])
 def mostliked():
 
     def find_most_liked(current, found):
@@ -55,7 +55,7 @@ def create():
         article.save()
     except ValueError as e:
         return jsonify({
-            'message': "title/content is too short"
+            'message': str(e)
         }), 422
 
     return article_schema.jsonify(article)

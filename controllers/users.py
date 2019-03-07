@@ -13,7 +13,7 @@ def index():
     users = User.query.all()
     return users_schema.jsonify(users)
 
-@api.route('/users/most', methods=['GET'])
+@api.route('/users/most-prolific', methods=['GET'])
 def most():
 
     def find_most_prolific(current, found):

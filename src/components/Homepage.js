@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import ArticlePanel from './articles/ArticlePanel'
 import { Link } from 'react-router-dom'
+import Promise from 'bluebird'
 
 class Homepage extends React.Component {
   constructor() {
@@ -12,20 +13,13 @@ class Homepage extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get('/api/articles/desc')
-      .then(res => this.setState({articles: res.data}))
-      .catch(err => console.log(err.message))
 
-    axios
-      .get('/api/users/most')
-      .then(res => this.setState({user: res.data}))
-      .catch(err => console.log(err.message))
-
-    axios
-      .get('/api/articles/liked')
-      .then(res => this.setState({likedArticle: res.data}))
-      .catch(err => console.log(err.message))
+    Promise.props({
+      articles: axios.get('/api/articles/latest').then(res => res.data),
+      user: axios.get('/api/users/most-prolific').then(res => res.data),
+      likedArticle: axios.get('/api/articles/most-liked').then(res => res.data)
+    })
+      .then(data => this.setState(data))
   }
 
   render() {
