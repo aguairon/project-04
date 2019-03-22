@@ -37,7 +37,7 @@ Once they are logged in they can access their profile page where they will find 
 
 In order to like or comment an article they have to open the article show page. They can find the the latest article, the one with the most likes on the homepage and the list with all the articles on the Discover the creatures tab.
 
-<img width="1440" alt="Screenshot 2019-03-22 at 13 17 01" src="https://user-images.githubusercontent.com/9445433/54825170-d3024680-4ca4-11e9-97f2-3af637ef1a8d.png">
+<img width="1440" alt="Screenshot 2019-03-22 at 13 42 30" src="https://user-images.githubusercontent.com/9445433/54826751-60936580-4ca8-11e9-9912-3c8eced4bbb5.png">
 
 
 
