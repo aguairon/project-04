@@ -39,5 +39,16 @@ In order to like or comment an article they have to open the article show page. 
 
 <img width="1440" alt="Screenshot 2019-03-22 at 13 42 30" src="https://user-images.githubusercontent.com/9445433/54826751-60936580-4ca8-11e9-9912-3c8eced4bbb5.png">
 
+### Process
+I started the project by planning our models and database structure followed by some simple wireframes on how I wanted the site to look. 
+
+Once the database was functional, I moved onto creating the models, routes and the Seeds file. This file provides the initial list of articles, comments, likes and users for the site.
+
+After the backend was functional and had been tested by making API requests with Insomnia I moved onto creating the frontend. This was done in React.js with the Bulma framework. 
+
+First I created the views that would show the list of articles and the article itself.
+
+I wanted to experiment with modals in React, as I had seen them being used effectively on other sites. The React modal is used with the register/login form. The modal sits on top of the site stopping all interaction with the site until the user is logged in.
+
 
 
