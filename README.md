@@ -20,7 +20,7 @@
 * Bulma CSS Framework
 
 ## My Application: Chimera - the mythical cheatures blog
-<img width="300" alt="Screenshot 2019-03-22 at 13 03 43" src="https://user-images.githubusercontent.com/9445433/54824514-178ce280-4ca3-11e9-9722-ef3809960ee0.png">
+<img width="1440" alt="Screenshot 2019-03-22 at 13 17 01" src="https://user-images.githubusercontent.com/9445433/54825170-d3024680-4ca4-11e9-97f2-3af637ef1a8d.png">
 
 A hosted version of this app can be found at https://wdi-pepino.herokuapp.com
 
@@ -35,7 +35,9 @@ Once they are logged in they can access their profile page where they will find 
 
 <img width="1440" alt="Screenshot 2019-03-22 at 13 29 20" src="https://user-images.githubusercontent.com/9445433/54825914-891a6000-4ca6-11e9-8ec1-2d5034f18289.png">
 
-In order to like or comment an article they have to open the article show page. They can find the the latest article, the one with the most likes on the homepage and the list with all the articles on the Discover the creatures tab
+In order to like or comment an article they have to open the article show page. They can find the the latest article, the one with the most likes on the homepage and the list with all the articles on the Discover the creatures tab.
 
 <img width="1440" alt="Screenshot 2019-03-22 at 13 17 01" src="https://user-images.githubusercontent.com/9445433/54825170-d3024680-4ca4-11e9-97f2-3af637ef1a8d.png">
+
+
 
