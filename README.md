@@ -51,7 +51,7 @@ I wanted to experiment with modals in React, as I had seen them being used effec
 Once I had the main pages sorted and users could log in I moved on to create the fucntionality to leave comments and like articles.
 
 ### Wins
-I am particulary please with the like functionality. The outcome depends the user is the creator of the article or if they have liked it already or not.
+I am particulary pleased with the like functionality. The outcome depends on the user being the creator of the article or if they have liked it already or not.
 
 ```
 import React from 'react'
@@ -78,6 +78,9 @@ const ArticleLike = ({ likedBy, handleLike, error }) => {
 export default ArticleLike
 ```
 
+ ### Future Features
+Due to the limited time we had available testing was not as thorough as I would have liked. I would definitely would have loved to have written more tests. 
+I also would have liked to implement the functionality to use markdown while writting the article.
 
 
 
