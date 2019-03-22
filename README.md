@@ -20,4 +20,4 @@
 * Bulma CSS Framework
 
 ## My Application: Chimera - the mythical cheatures blog
-<img width="111" alt="Screenshot 2019-03-22 at 13 03 43" src="https://user-images.githubusercontent.com/9445433/54824514-178ce280-4ca3-11e9-9722-ef3809960ee0.png">
+<img width="300" alt="Screenshot 2019-03-22 at 13 03 43" src="https://user-images.githubusercontent.com/9445433/54824514-178ce280-4ca3-11e9-9722-ef3809960ee0.png">
