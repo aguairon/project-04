@@ -1,4 +1,4 @@
-# General Assembly Project 5 : Chimera - the mythical cheatures blog
+# General Assembly Project 4: Chimera - the mythical creatures blog
 ## Goal: Solo project to create a full-stack app with React.js & Python.
 
 ### Timeframe
