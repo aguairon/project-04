@@ -31,7 +31,7 @@ Before they can either comment or write/read articles the user has be logged in.
 
 <img width="1440" alt="Screenshot 2019-03-22 at 13 11 53" src="https://user-images.githubusercontent.com/9445433/54824876-1ad49e00-4ca4-11e9-80d3-7538840794d5.png">
 
-In the user's profile page where they will find the option to leave a new article. It also has the articles they have written so far, the articles they have liked and their details.
+In the user's profile page where they will find the option to create a new article. It also has the articles they have written so far, the articles they have liked, and their details.
 
 <img width="1440" alt="Screenshot 2019-03-22 at 13 29 20" src="https://user-images.githubusercontent.com/9445433/54825914-891a6000-4ca6-11e9-8ec1-2d5034f18289.png">
 
