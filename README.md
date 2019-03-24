@@ -19,7 +19,7 @@
 * Git / GitHub
 * Bulma CSS Framework
 
-## My Application: Chimera - the mythical cheatures blog
+## My Application: Chimera - the mythical creatures blog
 <img width="1440" alt="Screenshot 2019-03-22 at 13 17 01" src="https://user-images.githubusercontent.com/9445433/54825170-d3024680-4ca4-11e9-97f2-3af637ef1a8d.png">
 
 A hosted version of this app can be found at https://wdi-pepino.herokuapp.com
@@ -27,7 +27,7 @@ A hosted version of this app can be found at https://wdi-pepino.herokuapp.com
 ### Website overview
 This website allows users to write articles about mythical creatures and comment/like these articles.
 
-Before they can either comment or write/read articles the user has be logged in. If the user does not have account they can register, this will automativally log them in.
+Before they can either comment or write/read articles the user has be logged in. If the user does not have an account they can register; this will automatically log them in.
 
 <img width="1440" alt="Screenshot 2019-03-22 at 13 11 53" src="https://user-images.githubusercontent.com/9445433/54824876-1ad49e00-4ca4-11e9-80d3-7538840794d5.png">
 
